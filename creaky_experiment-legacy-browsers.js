@@ -553,7 +553,7 @@ async function experimentInit() {
     borderColor: null,
     colorSpace: 'rgb',
     borderWidth: 0.0,
-    opacity: null,
+    opacity: 1.0,
     depth: -9,
     letterHeight: 0.05,
     bold: true,
@@ -692,7 +692,7 @@ async function experimentInit() {
     borderColor: null,
     colorSpace: 'rgb',
     borderWidth: 0.0,
-    opacity: null,
+    opacity: 1.0,
     depth: -6,
     letterHeight: 0.05,
     bold: true,
@@ -1868,7 +1868,7 @@ function trainingTrialRoutineEachFrame() {
     // *continueBtn_4* updates
     if (t >= 0 && continueBtn_4.status === PsychoJS.Status.NOT_STARTED) {
       // update params
-      continueBtn_4.setOpacity(None, false);
+      continueBtn_4.setOpacity(1.0, false);
       // keep track of start time/frame for later
       continueBtn_4.tStart = t;  // (not accounting for frame time here)
       continueBtn_4.frameNStart = frameN;  // exact frame index
@@ -1880,7 +1880,7 @@ function trainingTrialRoutineEachFrame() {
     // if continueBtn_4 is active this frame...
     if (continueBtn_4.status === PsychoJS.Status.STARTED) {
       // update params
-      continueBtn_4.setOpacity(None, false);
+      continueBtn_4.setOpacity(1.0, false);
     }
     
     if (continueBtn_4.status === PsychoJS.Status.STARTED) {
@@ -2359,7 +2359,7 @@ function mainTrialRoutineEachFrame() {
     // *continueBtn_5* updates
     if (t >= 0 && continueBtn_5.status === PsychoJS.Status.NOT_STARTED) {
       // update params
-      continueBtn_5.setOpacity(None, false);
+      continueBtn_5.setOpacity(1.0, false);
       // keep track of start time/frame for later
       continueBtn_5.tStart = t;  // (not accounting for frame time here)
       continueBtn_5.frameNStart = frameN;  // exact frame index
@@ -2371,7 +2371,7 @@ function mainTrialRoutineEachFrame() {
     // if continueBtn_5 is active this frame...
     if (continueBtn_5.status === PsychoJS.Status.STARTED) {
       // update params
-      continueBtn_5.setOpacity(None, false);
+      continueBtn_5.setOpacity(1.0, false);
     }
     
     if (continueBtn_5.status === PsychoJS.Status.STARTED) {
@@ -2715,9 +2715,9 @@ function surveyRoutineRoutineEachFrame() {
         }
         resp = item["response"];
         if ((item["type"] === "free text")) {
-            answered = bool(resp);
+            answered = (resp ? true : false);
         } else {
-            answered = ((resp === 0) || bool(resp));
+            answered = (((resp === 0) || resp) ? true : false);
         }
         if ((! answered)) {
             all_required_answered = false;
