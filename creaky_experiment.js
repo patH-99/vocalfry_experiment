@@ -27,7 +27,7 @@ const psychoJS = new PsychoJS({
 // open window:
 psychoJS.openWindow({
   fullscr: true,
-  color: new util.Color((-1.0000, -1.0000, -1.0000)),
+  color: new util.Color('black'),
   units: 'height',
   waitBlanking: true,
   backgroundImage: '',
@@ -1605,7 +1605,7 @@ function trainingTrialRoutineBegin(snapshot) {
     // update component parameters for each repeat
     // Run 'Begin Routine' code from trainingLogic
     correct = false;
-    selection = null;
+    selection = "";
     arrowPos = ((stimType === "modal") ? [(- 0.55), (- 0.015)] : [0.475, (- 0.015)]);
     labelText = ((stimType === "modal") ? "There is NO vocal fry at all." : "There is VERY STRONG vocal fry.");
     feedbackMsg = "";
@@ -1646,6 +1646,7 @@ function trainingTrialRoutineBegin(snapshot) {
 }
 
 
+var rating;
 function trainingTrialRoutineEachFrame() {
   return async function () {
     //--- Loop for each frame of Routine 'trainingTrial' ---
@@ -1658,20 +1659,20 @@ function trainingTrialRoutineEachFrame() {
         selection = "bin";
         trainSlider.reset();
     }
-    if ((trainSlider.getRating() !== null)) {
+    rating = trainSlider.getRating();
+    if (rating) {
         selection = "slider";
     }
     if ((selection === "bin")) {
         correct = (stimType === "modal");
     } else {
         if ((selection === "slider")) {
-            rating = trainSlider.getRating();
-            correct = (((stimType === "creaky") && (rating !== null)) && (rating >= 90));
+            correct = ((stimType === "creaky") && (rating >= 90));
         } else {
             correct = false;
         }
     }
-    if ((selection === null)) {
+    if ((! selection)) {
         feedbackMsg = "";
     } else {
         if (correct) {
@@ -2128,7 +2129,7 @@ var mainTrialMaxDurationReached;
 var counterText;
 var bin_selected;
 var replay_used;
-var rating;
+var response_given;
 var rt_clock;
 var mainTrialMaxDuration;
 var mainTrialComponents;
@@ -2151,7 +2152,8 @@ function mainTrialRoutineBegin(snapshot) {
     counterText = `${trialCounter} / ${totalTrials}`;
     bin_selected = false;
     replay_used = false;
-    rating = null;
+    rating = 0;
+    response_given = false;
     rt_clock = new util.Clock();
     
     // setup some python lists for storing info about the mouse_2
@@ -2187,6 +2189,7 @@ function mainTrialRoutineBegin(snapshot) {
 }
 
 
+var slider_rating;
 function mainTrialRoutineEachFrame() {
   return async function () {
     //--- Loop for each frame of Routine 'mainTrial' ---
@@ -2199,18 +2202,29 @@ function mainTrialRoutineEachFrame() {
         bin_selected = true;
         mainSlider.reset();
     }
-    if ((mainSlider.getRating() !== null)) {
+    slider_rating = mainSlider.getRating();
+    if (slider_rating) {
         bin_selected = false;
     }
-    rating = (bin_selected ? 0 : mainSlider.getRating());
+    if (bin_selected) {
+        rating = 0;
+        response_given = true;
+    } else {
+        if (slider_rating) {
+            rating = slider_rating;
+            response_given = true;
+        } else {
+            response_given = false;
+        }
+    }
     binButton_2.fillColor = (bin_selected ? "green" : "darkgrey");
-    continueBtn_5.opacity = ((rating !== null) ? 1.0 : 0.35);
+    continueBtn_5.opacity = (response_given ? 1.0 : 0.35);
     if (((! replay_used) && replayBtn_3.isClicked)) {
         mainSound.play();
         replay_used = true;
     }
     replayBtn_3.opacity = (replay_used ? 0.35 : 1.0);
-    if ((continueBtn_5.isClicked && (rating !== null))) {
+    if ((continueBtn_5.isClicked && response_given)) {
         psychoJS.experiment.addData("rating", rating);
         psychoJS.experiment.addData("rt_sec", util.round(rt_clock.getTime(), 4));
         psychoJS.experiment.addData("replay_used", replay_used);
@@ -2692,8 +2706,17 @@ function surveyRoutineRoutineEachFrame() {
         if (_pj.in_es6(item["type"], ["heading", "description"])) {
             continue;
         }
-        is_required = (! _pj.in_es6(item.get("required", 1).toString().strip(), ["0", "False", "false", ""]));
-        if ((is_required && _pj.in_es6(item["response"], [null, ""]))) {
+        is_required = (! _pj.in_es6(item["required"], [0, "0", false, "False", "false"]));
+        if ((! is_required)) {
+            continue;
+        }
+        resp = item["response"];
+        if ((item["type"] === "free text")) {
+            answered = bool(resp);
+        } else {
+            answered = ((resp === 0) || bool(resp));
+        }
+        if ((! answered)) {
             all_required_answered = false;
             break;
         }
