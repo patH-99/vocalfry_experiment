@@ -296,7 +296,7 @@ async function experimentInit() {
     units: undefined, 
     pos: [0, 0], draggable: false, height: 0.05,  wrapWidth: undefined, ori: 0.0,
     languageStyle: 'LTR',
-    color: new util.Color('color_text'),  opacity: undefined,
+    color: new util.Color('white'),  opacity: undefined,
     depth: 0.0 
   });
   
@@ -801,7 +801,7 @@ async function experimentInit() {
   thankYouText = new visual.TextStim({
     win: psychoJS.window,
     name: 'thankYouText',
-    text: 'Thank you! The experiment has been completed.\n\nPlease wait while your results are being saved.\n\nYou may now click the button below to close the window.',
+    text: 'Thank you! The experiment has been completed.\n\nPlease wait 5 seconds while your results are being saved.\n\nYou may then click the button below to close the window.',
     font: 'Arial',
     units: undefined, 
     pos: [0, 0], draggable: false, height: 0.05,  wrapWidth: undefined, ori: 0.0,
@@ -2902,7 +2902,7 @@ function thankYouScreenRoutineEachFrame() {
     
     
     // *closeButton* updates
-    if (t >= 0 && closeButton.status === PsychoJS.Status.NOT_STARTED) {
+    if (t >= 5 && closeButton.status === PsychoJS.Status.NOT_STARTED) {
       // keep track of start time/frame for later
       closeButton.tStart = t;  // (not accounting for frame time here)
       closeButton.frameNStart = frameN;  // exact frame index
