@@ -1,4 +1,4 @@
-﻿/************************** 
+/************************** 
  * Creaky_Experiment *
  **************************/
 
@@ -241,10 +241,6 @@ async function updateInfo() {
 
 
 var welcomeRoutineClock;
-var color_bg_neutral;
-var color_correct;
-var color_incorrect;
-var color_text;
 var welcomeText;
 var continueBtn;
 var introTrialClock;
@@ -292,12 +288,6 @@ var routineTimer;
 async function experimentInit() {
   // Initialize components for Routine "welcomeRoutine"
   welcomeRoutineClock = new util.Clock();
-  // Run 'Begin Experiment' code from code
-  color_bg_neutral = [0.25, 0.25, 0.25];
-  color_correct = [0.3, 0.75, 0.3];
-  color_incorrect = [0.85, 0.3, 0.3];
-  color_text = [0.9, 0.9, 0.9];
-  
   welcomeText = new visual.TextStim({
     win: psychoJS.window,
     name: 'welcomeText',
@@ -307,7 +297,7 @@ async function experimentInit() {
     pos: [0, 0], draggable: false, height: 0.05,  wrapWidth: undefined, ori: 0.0,
     languageStyle: 'LTR',
     color: new util.Color('color_text'),  opacity: undefined,
-    depth: -1.0 
+    depth: 0.0 
   });
   
   continueBtn = new visual.ButtonStim({
@@ -327,7 +317,7 @@ async function experimentInit() {
     colorSpace: 'rgb',
     borderWidth: 0.0,
     opacity: null,
-    depth: -2,
+    depth: -1,
     letterHeight: 0.05,
     bold: true,
     italic: false,
