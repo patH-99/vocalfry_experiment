@@ -74,6 +74,9 @@ flowScheduler.add(mainLoopLoopEnd);
 
 
 
+flowScheduler.add(mainFinishedRoutineBegin());
+flowScheduler.add(mainFinishedRoutineEachFrame());
+flowScheduler.add(mainFinishedRoutineEnd());
 flowScheduler.add(surveyRoutineRoutineBegin());
 flowScheduler.add(surveyRoutineRoutineEachFrame());
 flowScheduler.add(surveyRoutineRoutineEnd());
@@ -277,6 +280,9 @@ var trialCounterText;
 var breakScreenClock;
 var breakText;
 var breakContinueButton;
+var mainFinishedClock;
+var mainFinishedText;
+var mainFinishedButton;
 var surveyRoutineClock;
 var surveyForm;
 var submitBtn;
@@ -757,6 +763,44 @@ async function experimentInit() {
     italic: false,
   });
   breakContinueButton.clock = new util.Clock();
+  
+  // Initialize components for Routine "mainFinished"
+  mainFinishedClock = new util.Clock();
+  mainFinishedText = new visual.TextStim({
+    win: psychoJS.window,
+    name: 'mainFinishedText',
+    text: 'You have finished the main experiment!\n\nNow, you will be asked to answer a few survey questions.\n\nClick the button below to continue.',
+    font: 'Arial',
+    units: undefined, 
+    pos: [0, 0], draggable: false, height: 0.05,  wrapWidth: undefined, ori: 0.0,
+    languageStyle: 'LTR',
+    color: new util.Color('white'),  opacity: undefined,
+    depth: 0.0 
+  });
+  
+  mainFinishedButton = new visual.ButtonStim({
+    win: psychoJS.window,
+    name: 'mainFinishedButton',
+    text: 'Continue',
+    font: 'Arial',
+    pos: [0, (- 0.4)],
+    size: [0.3, 0.08],
+    padding: null,
+    anchor: 'center',
+    ori: 0.0,
+    units: psychoJS.window.units,
+    color: 'white',
+    fillColor: 'darkgrey',
+    borderColor: null,
+    colorSpace: 'rgb',
+    borderWidth: 0.0,
+    opacity: null,
+    depth: -1,
+    letterHeight: 0.05,
+    bold: true,
+    italic: false,
+  });
+  mainFinishedButton.clock = new util.Clock();
   
   // Initialize components for Routine "surveyRoutine"
   surveyRoutineClock = new util.Clock();
@@ -1685,6 +1729,7 @@ function trainingTrialRoutineEachFrame() {
     binButton.fillColor = ((selection === "bin") ? "green" : "darkgrey");
     continueBtn_4.opacity = (correct ? 1.0 : 0.35);
     if (replayBtn_2.isClicked) {
+        trainSound.isFinished = false;
         trainSound.play();
     }
     if ((continueBtn_4.isClicked && correct)) {
@@ -2220,10 +2265,10 @@ function mainTrialRoutineEachFrame() {
     binButton_2.fillColor = (bin_selected ? "green" : "darkgrey");
     continueBtn_5.opacity = (response_given ? 1.0 : 0.35);
     if (((! replay_used) && replayBtn_3.isClicked)) {
+        mainSound.isFinished = false;
         mainSound.play();
         replay_used = true;
     }
-    replayBtn_3.opacity = (replay_used ? 0.35 : 1.0);
     if ((continueBtn_5.isClicked && response_given)) {
         psychoJS.experiment.addData("rating", rating);
         psychoJS.experiment.addData("rt_sec", util.round(rt_clock.getTime(), 4));
@@ -2636,6 +2681,158 @@ function breakScreenRoutineEnd(snapshot) {
 }
 
 
+var mainFinishedMaxDurationReached;
+var mainFinishedMaxDuration;
+var mainFinishedComponents;
+function mainFinishedRoutineBegin(snapshot) {
+  return async function () {
+    TrialHandler.fromSnapshot(snapshot); // ensure that .thisN vals are up to date
+    
+    //--- Prepare to start Routine 'mainFinished' ---
+    t = 0;
+    frameN = -1;
+    continueRoutine = true; // until we're told otherwise
+    // keep track of whether this Routine was forcibly ended
+    routineForceEnded = false;
+    mainFinishedClock.reset();
+    routineTimer.reset();
+    mainFinishedMaxDurationReached = false;
+    // update component parameters for each repeat
+    // reset mainFinishedButton to account for continued clicks & clear times on/off
+    mainFinishedButton.reset()
+    psychoJS.experiment.addData('mainFinished.started', globalClock.getTime());
+    mainFinishedMaxDuration = null
+    // keep track of which components have finished
+    mainFinishedComponents = [];
+    mainFinishedComponents.push(mainFinishedText);
+    mainFinishedComponents.push(mainFinishedButton);
+    
+    for (const thisComponent of mainFinishedComponents)
+      if ('status' in thisComponent)
+        thisComponent.status = PsychoJS.Status.NOT_STARTED;
+    return Scheduler.Event.NEXT;
+  }
+}
+
+
+function mainFinishedRoutineEachFrame() {
+  return async function () {
+    //--- Loop for each frame of Routine 'mainFinished' ---
+    // get current time
+    t = mainFinishedClock.getTime();
+    frameN = frameN + 1;// number of completed frames (so 0 is the first frame)
+    // update/draw components on each frame
+    
+    // *mainFinishedText* updates
+    if (t >= 0.0 && mainFinishedText.status === PsychoJS.Status.NOT_STARTED) {
+      // keep track of start time/frame for later
+      mainFinishedText.tStart = t;  // (not accounting for frame time here)
+      mainFinishedText.frameNStart = frameN;  // exact frame index
+      
+      mainFinishedText.setAutoDraw(true);
+    }
+    
+    
+    // if mainFinishedText is active this frame...
+    if (mainFinishedText.status === PsychoJS.Status.STARTED) {
+    }
+    
+    
+    // *mainFinishedButton* updates
+    if (t >= 0 && mainFinishedButton.status === PsychoJS.Status.NOT_STARTED) {
+      // keep track of start time/frame for later
+      mainFinishedButton.tStart = t;  // (not accounting for frame time here)
+      mainFinishedButton.frameNStart = frameN;  // exact frame index
+      
+      mainFinishedButton.setAutoDraw(true);
+    }
+    
+    
+    // if mainFinishedButton is active this frame...
+    if (mainFinishedButton.status === PsychoJS.Status.STARTED) {
+    }
+    
+    if (mainFinishedButton.status === PsychoJS.Status.STARTED) {
+      // check whether mainFinishedButton has been pressed
+      if (mainFinishedButton.isClicked) {
+        if (!mainFinishedButton.wasClicked) {
+          // store time of first click
+          mainFinishedButton.timesOn.push(mainFinishedButton.clock.getTime());
+          // store time clicked until
+          mainFinishedButton.timesOff.push(mainFinishedButton.clock.getTime());
+        } else {
+          // update time clicked until;
+          mainFinishedButton.timesOff[mainFinishedButton.timesOff.length - 1] = mainFinishedButton.clock.getTime();
+        }
+        if (!mainFinishedButton.wasClicked) {
+          // end routine when mainFinishedButton is clicked
+          continueRoutine = false;
+          
+        }
+        // if mainFinishedButton is still clicked next frame, it is not a new click
+        mainFinishedButton.wasClicked = true;
+      } else {
+        // if mainFinishedButton is clicked next frame, it is a new click
+        mainFinishedButton.wasClicked = false;
+      }
+    } else {
+      // keep clock at 0 if mainFinishedButton hasn't started / has finished
+      mainFinishedButton.clock.reset();
+      // if mainFinishedButton is clicked next frame, it is a new click
+      mainFinishedButton.wasClicked = false;
+    }
+    // check for quit (typically the Esc key)
+    if (psychoJS.experiment.experimentEnded || psychoJS.eventManager.getKeys({keyList:['escape']}).length > 0) {
+      return quitPsychoJS('The [Escape] key was pressed. Goodbye!', false);
+    }
+    
+    // check if the Routine should terminate
+    if (!continueRoutine) {  // a component has requested a forced-end of Routine
+      routineForceEnded = true;
+      return Scheduler.Event.NEXT;
+    }
+    
+    continueRoutine = false;  // reverts to True if at least one component still running
+    for (const thisComponent of mainFinishedComponents)
+      if ('status' in thisComponent && thisComponent.status !== PsychoJS.Status.FINISHED) {
+        continueRoutine = true;
+        break;
+      }
+    
+    // refresh the screen if continuing
+    if (continueRoutine) {
+      return Scheduler.Event.FLIP_REPEAT;
+    } else {
+      return Scheduler.Event.NEXT;
+    }
+  };
+}
+
+
+function mainFinishedRoutineEnd(snapshot) {
+  return async function () {
+    //--- Ending Routine 'mainFinished' ---
+    for (const thisComponent of mainFinishedComponents) {
+      if (typeof thisComponent.setAutoDraw === 'function') {
+        thisComponent.setAutoDraw(false);
+      }
+    }
+    psychoJS.experiment.addData('mainFinished.stopped', globalClock.getTime());
+    psychoJS.experiment.addData('mainFinishedButton.numClicks', mainFinishedButton.numClicks);
+    psychoJS.experiment.addData('mainFinishedButton.timesOn', mainFinishedButton.timesOn);
+    psychoJS.experiment.addData('mainFinishedButton.timesOff', mainFinishedButton.timesOff);
+    // the Routine "mainFinished" was not non-slip safe, so reset the non-slip timer
+    routineTimer.reset();
+    
+    // Routines running outside a loop should always advance the datafile row
+    if (currentLoop === psychoJS.experiment) {
+      psychoJS.experiment.nextEntry(snapshot);
+    }
+    return Scheduler.Event.NEXT;
+  }
+}
+
+
 var surveyRoutineMaxDurationReached;
 var surveyRoutineMaxDuration;
 var surveyRoutineComponents;
@@ -2673,6 +2870,9 @@ function surveyRoutineRoutineBegin(snapshot) {
 var _pj;
 var formData;
 var all_required_answered;
+var is_required;
+var resp;
+var answered;
 function surveyRoutineRoutineEachFrame() {
   return async function () {
     //--- Loop for each frame of Routine 'surveyRoutine' ---
@@ -2701,6 +2901,9 @@ function surveyRoutineRoutineEachFrame() {
     _pj_snippets(_pj);
     formData = surveyForm.getData();
     all_required_answered = true;
+    is_required = true;
+    resp = "";
+    answered = true;
     for (var item, _pj_c = 0, _pj_a = formData, _pj_b = _pj_a.length; (_pj_c < _pj_b); _pj_c += 1) {
         item = _pj_a[_pj_c];
         if (_pj.in_es6(item["type"], ["heading", "description"])) {
