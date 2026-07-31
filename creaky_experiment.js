@@ -462,7 +462,7 @@ async function experimentInit() {
     padding: null,
     anchor: 'center',
     ori: 0.0,
-    units: psychoJS.window.units,
+    units: 'height',
     color: 'white',
     fillColor: 'darkgrey',
     borderColor: null,
@@ -641,7 +641,7 @@ async function experimentInit() {
     padding: null,
     anchor: 'center',
     ori: 0.0,
-    units: psychoJS.window.units,
+    units: 'height',
     color: 'white',
     fillColor: 'darkgrey',
     borderColor: null,
@@ -1288,13 +1288,14 @@ function introTrialRoutineEachFrame() {
     // Run 'Each Frame' code from introLogic
     if ((replayBtn.numClicks > prevReplayClicks)) {
         introSound.stop();
+        introSound.isFinished = false;
+        introSound.tStart = t;
         introSound.play();
         prevReplayClicks = replayBtn.numClicks;
     }
     if (continueBtn_2.isClicked) {
         introSound.stop();
     }
-    
     
     // *introductionText* updates
     if (t >= 0 && introductionText.status === PsychoJS.Status.NOT_STARTED) {
@@ -1337,8 +1338,6 @@ function introTrialRoutineEachFrame() {
     
     // *replayBtn* updates
     if (t >= 0 && replayBtn.status === PsychoJS.Status.NOT_STARTED) {
-      // update params
-      replayBtn.setOpacity(1.0, false);
       // keep track of start time/frame for later
       replayBtn.tStart = t;  // (not accounting for frame time here)
       replayBtn.frameNStart = frameN;  // exact frame index
@@ -1349,8 +1348,6 @@ function introTrialRoutineEachFrame() {
     
     // if replayBtn is active this frame...
     if (replayBtn.status === PsychoJS.Status.STARTED) {
-      // update params
-      replayBtn.setOpacity(1.0, false);
     }
     
     if (replayBtn.status === PsychoJS.Status.STARTED) {
@@ -1665,6 +1662,7 @@ function trainingTrialRoutineBegin(snapshot) {
     feedbackMsg = "";
     replay_used = false;
     prevReplayStateTrain = false;
+    
     // setup some python lists for storing info about the mouse
     gotValidClick = false; // until a click is received
     trainSound.isFinished = false;
@@ -1712,39 +1710,46 @@ function trainingTrialRoutineEachFrame() {
     // update/draw components on each frame
     // Run 'Each Frame' code from trainingLogic
     if (binButton.isClicked) {
-        selection = 'bin';
+        selection = "bin";
         trainSlider.reset();
     }
     rating = trainSlider.getRating();
     if (rating) {
-        selection = 'slider';
+        selection = "slider";
     }
-    if (selection === 'bin') {
-        correct = (stimType === 'modal');
-    } else if (selection === 'slider') {
-        correct = (stimType === 'creaky' && rating >= 90);
+    if ((selection === "bin")) {
+        correct = (stimType === "modal");
     } else {
-        correct = false;
+        if ((selection === "slider")) {
+            correct = ((stimType === "creaky") && (rating >= 90));
+        } else {
+            correct = false;
+        }
     }
-    if (!selection) {
+    if ((! selection)) {
         feedbackMsg = "";
-    } else if (correct) {
-        feedbackMsg = "You may now continue to the next sound!";
     } else {
-        feedbackMsg = "Try again.";
+        if (correct) {
+            feedbackMsg = "You may now continue to the next sound!";
+        } else {
+            feedbackMsg = "Try again.";
+        }
     }
-    feedbackText.color = (correct ? 'green' : 'red');
-    binButton.fillColor = (selection === 'bin' ? 'green' : 'darkgrey');
+    feedbackText.color = (correct ? "green" : "red");
+    binButton.fillColor = ((selection === "bin") ? "green" : "darkgrey");
     continueBtn_4.opacity = (correct ? 1.0 : 0.35);
     replay_click_now = replayBtn_2.isClicked;
-    if (replay_click_now && !prevReplayStateTrain) {
+    if ((replay_click_now && (! prevReplayStateTrain))) {
+        trainSound.stop();
         trainSound.isFinished = false;
+        trainSound.tStart = t;
         trainSound.play();
     }
     prevReplayStateTrain = replay_click_now;
-    if (continueBtn_4.isClicked && correct) {
+    if ((continueBtn_4.isClicked && correct)) {
         continueRoutine = false;
     }
+    
     if (trainSound.status === STARTED) {
         trainSound.isPlaying = true;
         if (t >= (trainSound.getDuration() + trainSound.tStart)) {
@@ -1878,8 +1883,6 @@ function trainingTrialRoutineEachFrame() {
     
     // *replayBtn_2* updates
     if (t >= 0 && replayBtn_2.status === PsychoJS.Status.NOT_STARTED) {
-      // update params
-      replayBtn_2.setOpacity(1.0, false);
       // keep track of start time/frame for later
       replayBtn_2.tStart = t;  // (not accounting for frame time here)
       replayBtn_2.frameNStart = frameN;  // exact frame index
@@ -1890,8 +1893,6 @@ function trainingTrialRoutineEachFrame() {
     
     // if replayBtn_2 is active this frame...
     if (replayBtn_2.status === PsychoJS.Status.STARTED) {
-      // update params
-      replayBtn_2.setOpacity(1.0, false);
     }
     
     if (replayBtn_2.status === PsychoJS.Status.STARTED) {
@@ -1924,8 +1925,6 @@ function trainingTrialRoutineEachFrame() {
     
     // *continueBtn_4* updates
     if (t >= 0 && continueBtn_4.status === PsychoJS.Status.NOT_STARTED) {
-      // update params
-      continueBtn_4.setOpacity(1.0, false);
       // keep track of start time/frame for later
       continueBtn_4.tStart = t;  // (not accounting for frame time here)
       continueBtn_4.frameNStart = frameN;  // exact frame index
@@ -1936,8 +1935,6 @@ function trainingTrialRoutineEachFrame() {
     
     // if continueBtn_4 is active this frame...
     if (continueBtn_4.status === PsychoJS.Status.STARTED) {
-      // update params
-      continueBtn_4.setOpacity(1.0, false);
     }
     
     if (continueBtn_4.status === PsychoJS.Status.STARTED) {
@@ -2280,7 +2277,9 @@ function mainTrialRoutineEachFrame() {
     
     replay_click_now = replayBtn_3.isClicked;
     if ((!replay_used) && replay_click_now && (!prevReplayStateMain)) {
+        mainSound.stop();
         mainSound.isFinished = false;
+        mainSound.tStart = t;
         mainSound.play();
         replay_used = true;
     }
@@ -2376,8 +2375,6 @@ function mainTrialRoutineEachFrame() {
     
     // *replayBtn_3* updates
     if (t >= 0 && replayBtn_3.status === PsychoJS.Status.NOT_STARTED) {
-      // update params
-      replayBtn_3.setOpacity(1.0, false);
       // keep track of start time/frame for later
       replayBtn_3.tStart = t;  // (not accounting for frame time here)
       replayBtn_3.frameNStart = frameN;  // exact frame index
@@ -2388,8 +2385,6 @@ function mainTrialRoutineEachFrame() {
     
     // if replayBtn_3 is active this frame...
     if (replayBtn_3.status === PsychoJS.Status.STARTED) {
-      // update params
-      replayBtn_3.setOpacity(1.0, false);
     }
     
     if (replayBtn_3.status === PsychoJS.Status.STARTED) {
@@ -2422,8 +2417,6 @@ function mainTrialRoutineEachFrame() {
     
     // *continueBtn_5* updates
     if (t >= 0 && continueBtn_5.status === PsychoJS.Status.NOT_STARTED) {
-      // update params
-      continueBtn_5.setOpacity(1.0, false);
       // keep track of start time/frame for later
       continueBtn_5.tStart = t;  // (not accounting for frame time here)
       continueBtn_5.frameNStart = frameN;  // exact frame index
@@ -2434,8 +2427,6 @@ function mainTrialRoutineEachFrame() {
     
     // if continueBtn_5 is active this frame...
     if (continueBtn_5.status === PsychoJS.Status.STARTED) {
-      // update params
-      continueBtn_5.setOpacity(1.0, false);
     }
     
     if (continueBtn_5.status === PsychoJS.Status.STARTED) {
