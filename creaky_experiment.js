@@ -2,7 +2,7 @@
  * Creaky_Experiment *
  **************************/
 
-import { core, data, sound, util, visual, hardware } from './lib/psychojs-2026.2.0.js';
+import { core, data, sound, util, visual, hardware } from './lib/psychojs-2026.1.3.js';
 const { PsychoJS } = core;
 const { TrialHandler, MultiStairHandler } = data;
 const { Scheduler } = util;
@@ -219,7 +219,7 @@ async function updateInfo() {
   currentLoop = psychoJS.experiment;  // right now there are no loops
   expInfo['date'] = util.MonotonicClock.getDateStr();  // add a simple timestamp
   expInfo['expName'] = expName;
-  expInfo['psychopyVersion'] = '2026.2.0';
+  expInfo['psychopyVersion'] = '2026.1.3';
   expInfo['OS'] = window.navigator.platform;
 
 
