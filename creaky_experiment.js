@@ -1287,8 +1287,13 @@ function introTrialRoutineEachFrame() {
     // update/draw components on each frame
     // Run 'Each Frame' code from introLogic
     if ((replayBtn.numClicks > prevReplayClicks)) {
+        introSound.stop();
+        introSound.isFinished = false;
         introSound.play();
         prevReplayClicks = replayBtn.numClicks;
+    }
+    if (continueBtn_2.isClicked) {
+        introSound.stop();
     }
     
     
@@ -1635,6 +1640,7 @@ var arrowPos;
 var labelText;
 var feedbackMsg;
 var replay_used;
+var prevReplayStateTrain;
 var gotValidClick;
 var trainingTrialMaxDuration;
 var trainingTrialComponents;
@@ -1659,7 +1665,7 @@ function trainingTrialRoutineBegin(snapshot) {
     labelText = ((stimType === "modal") ? "There is NO vocal fry at all." : "There is VERY STRONG vocal fry.");
     feedbackMsg = "";
     replay_used = false;
-    
+    prevReplayStateTrain = false;
     // setup some python lists for storing info about the mouse
     gotValidClick = false; // until a click is received
     trainSound.isFinished = false;
@@ -1697,6 +1703,7 @@ function trainingTrialRoutineBegin(snapshot) {
 
 
 var rating;
+var replay_click_now;
 function trainingTrialRoutineEachFrame() {
   return async function () {
     //--- Loop for each frame of Routine 'trainingTrial' ---
@@ -1730,10 +1737,12 @@ function trainingTrialRoutineEachFrame() {
     feedbackText.color = (correct ? 'green' : 'red');
     binButton.fillColor = (selection === 'bin' ? 'green' : 'darkgrey');
     continueBtn_4.opacity = (correct ? 1.0 : 0.35);
-    if (replayBtn_2.isClicked) {
+    replay_click_now = replayBtn_2.isClicked;
+    if (replay_click_now && !prevReplayStateTrain) {
         trainSound.isFinished = false;
         trainSound.play();
     }
+    prevReplayStateTrain = replay_click_now;
     if (continueBtn_4.isClicked && correct) {
         continueRoutine = false;
     }
@@ -2178,6 +2187,7 @@ var counterText;
 var bin_selected;
 var response_given;
 var rt_clock;
+var prevReplayStateMain;
 var mainTrialMaxDuration;
 var mainTrialComponents;
 function mainTrialRoutineBegin(snapshot) {
@@ -2202,7 +2212,7 @@ function mainTrialRoutineBegin(snapshot) {
     rating = 0;
     response_given = false;
     rt_clock = new util.Clock();
-    
+    prevReplayStateMain = false;
     // setup some python lists for storing info about the mouse_2
     gotValidClick = false; // until a click is received
     mainSound.isFinished = false;
@@ -2269,11 +2279,13 @@ function mainTrialRoutineEachFrame() {
     continueBtn_5.opacity = (response_given ? 1.0 : 0.35);
     replayBtn_3.opacity = replay_used ? 0.35 : 1.0;
     
-    if (((! replay_used) && replayBtn_3.isClicked)) {
+    replay_click_now = replayBtn_3.isClicked;
+    if ((!replay_used) && replay_click_now && (!prevReplayStateMain)) {
         mainSound.isFinished = false;
         mainSound.play();
         replay_used = true;
     }
+    prevReplayStateMain = replay_click_now;
     if ((continueBtn_5.isClicked && response_given)) {
         psychoJS.experiment.addData("rating", rating);
         psychoJS.experiment.addData("rt_sec", util.round(rt_clock.getTime(), 4));
