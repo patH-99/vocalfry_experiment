@@ -2,7 +2,7 @@
  * Creaky_Experiment *
  **************************/
 
-import { core, data, sound, util, visual, hardware } from './lib/psychojs-2026.1.3.js';
+import { core, data, sound, util, visual, hardware } from './lib/psychojs-2026.2.0.js';
 const { PsychoJS } = core;
 const { TrialHandler, MultiStairHandler } = data;
 const { Scheduler } = util;
@@ -219,7 +219,7 @@ async function updateInfo() {
   currentLoop = psychoJS.experiment;  // right now there are no loops
   expInfo['date'] = util.MonotonicClock.getDateStr();  // add a simple timestamp
   expInfo['expName'] = expName;
-  expInfo['psychopyVersion'] = '2026.1.3';
+  expInfo['psychopyVersion'] = '2026.2.0';
   expInfo['OS'] = window.navigator.platform;
 
 
@@ -310,7 +310,7 @@ async function experimentInit() {
     win: psychoJS.window,
     name: 'continueBtn',
     text: 'Continue',
-    font: 'Arvo',
+    font: 'Arial',
     pos: [0, (- 0.4)],
     size: [0.3, 0.08],
     padding: null,
@@ -368,7 +368,7 @@ async function experimentInit() {
     borderColor: null,
     colorSpace: 'rgb',
     borderWidth: 0.0,
-    opacity: null,
+    opacity: 1.0,
     depth: -3,
     letterHeight: 0.05,
     bold: true,
@@ -380,7 +380,7 @@ async function experimentInit() {
     win: psychoJS.window,
     name: 'continueBtn_2',
     text: 'Continue',
-    font: 'Arvo',
+    font: 'Arial',
     pos: [0.35, (- 0.4)],
     size: [0.3, 0.08],
     padding: null,
@@ -418,7 +418,7 @@ async function experimentInit() {
     win: psychoJS.window,
     name: 'continueBtn_3',
     text: 'Continue',
-    font: 'Arvo',
+    font: 'Arial',
     pos: [0, (- 0.4)],
     size: [0.3, 0.08],
     padding: null,
@@ -482,7 +482,7 @@ async function experimentInit() {
     size: [0.75, 0.05], pos: [0.1, (- 0.15)], ori: 0.0, units: psychoJS.window.units,
     labels: ["Very weak", "Very strong"], fontSize: 0.05, ticks: [1, 100],
     granularity: 0.0, style: ["RATING"],
-    color: new util.Color('LightGray'), markerColor: new util.Color((-1.0000, 0.0039, -1.0000)), lineColor: new util.Color('White'), 
+    color: new util.Color('LightGray'), markerColor: new util.Color('green'), lineColor: new util.Color('White'), 
     opacity: undefined, fontFamily: 'Noto Sans', bold: true, italic: false, depth: -4, 
     flip: false,
   });
@@ -543,7 +543,7 @@ async function experimentInit() {
     borderColor: null,
     colorSpace: 'rgb',
     borderWidth: 0.0,
-    opacity: null,
+    opacity: 1.0,
     depth: -8,
     letterHeight: 0.05,
     bold: true,
@@ -661,7 +661,7 @@ async function experimentInit() {
     size: [0.75, 0.05], pos: [0.1, (- 0.15)], ori: 0.0, units: psychoJS.window.units,
     labels: ["Very weak", "Very strong"], fontSize: 0.05, ticks: [1, 100],
     granularity: 0.0, style: ["RATING"],
-    color: new util.Color('LightGray'), markerColor: new util.Color((-1.0000, 0.0039, -1.0000)), lineColor: new util.Color('White'), 
+    color: new util.Color('LightGray'), markerColor: new util.Color('green'), lineColor: new util.Color('White'), 
     opacity: undefined, fontFamily: 'Noto Sans', bold: true, italic: false, depth: -4, 
     flip: false,
   });
@@ -682,7 +682,7 @@ async function experimentInit() {
     borderColor: null,
     colorSpace: 'rgb',
     borderWidth: 0.0,
-    opacity: null,
+    opacity: 1.0,
     depth: -5,
     letterHeight: 0.05,
     bold: true,
@@ -820,7 +820,7 @@ async function experimentInit() {
     win: psychoJS.window,
     name: 'submitBtn',
     text: 'Submit',
-    font: 'Arvo',
+    font: 'Arial',
     pos: [0, (- 0.42)],
     size: [0.3, 0.08],
     padding: null,
@@ -1333,6 +1333,8 @@ function introTrialRoutineEachFrame() {
     
     // *replayBtn* updates
     if (t >= 0 && replayBtn.status === PsychoJS.Status.NOT_STARTED) {
+      // update params
+      replayBtn.setOpacity(1.0, false);
       // keep track of start time/frame for later
       replayBtn.tStart = t;  // (not accounting for frame time here)
       replayBtn.frameNStart = frameN;  // exact frame index
@@ -1343,6 +1345,8 @@ function introTrialRoutineEachFrame() {
     
     // if replayBtn is active this frame...
     if (replayBtn.status === PsychoJS.Status.STARTED) {
+      // update params
+      replayBtn.setOpacity(1.0, false);
     }
     
     if (replayBtn.status === PsychoJS.Status.STARTED) {
@@ -1630,6 +1634,7 @@ var selection;
 var arrowPos;
 var labelText;
 var feedbackMsg;
+var replay_used;
 var gotValidClick;
 var trainingTrialMaxDuration;
 var trainingTrialComponents;
@@ -1653,6 +1658,7 @@ function trainingTrialRoutineBegin(snapshot) {
     arrowPos = ((stimType === "modal") ? [(- 0.55), (- 0.015)] : [0.475, (- 0.015)]);
     labelText = ((stimType === "modal") ? "There is NO vocal fry at all." : "There is VERY STRONG vocal fry.");
     feedbackMsg = "";
+    replay_used = false;
     
     // setup some python lists for storing info about the mouse
     gotValidClick = false; // until a click is received
@@ -1664,6 +1670,7 @@ function trainingTrialRoutineBegin(snapshot) {
     trainSlider.reset()
     arrowShape.setPos(arrowPos);
     trainLabel.setText(labelText);
+    feedbackText.setOpacity(None);
     // reset replayBtn_2 to account for continued clicks & clear times on/off
     replayBtn_2.reset()
     // reset continueBtn_4 to account for continued clicks & clear times on/off
@@ -1700,42 +1707,37 @@ function trainingTrialRoutineEachFrame() {
     // update/draw components on each frame
     // Run 'Each Frame' code from trainingLogic
     if (binButton.isClicked) {
-        selection = "bin";
+        selection = 'bin';
         trainSlider.reset();
     }
     rating = trainSlider.getRating();
     if (rating) {
-        selection = "slider";
+        selection = 'slider';
     }
-    if ((selection === "bin")) {
-        correct = (stimType === "modal");
+    if (selection === 'bin') {
+        correct = (stimType === 'modal');
+    } else if (selection === 'slider') {
+        correct = (stimType === 'creaky' && rating >= 90);
     } else {
-        if ((selection === "slider")) {
-            correct = ((stimType === "creaky") && (rating >= 90));
-        } else {
-            correct = false;
-        }
+        correct = false;
     }
-    if ((! selection)) {
+    if (!selection) {
         feedbackMsg = "";
+    } else if (correct) {
+        feedbackMsg = "You may now continue to the next sound!";
     } else {
-        if (correct) {
-            feedbackMsg = "You may now continue to the next sound!";
-        } else {
-            feedbackMsg = "Try again.";
-        }
+        feedbackMsg = "Try again.";
     }
-    feedbackText.color = (correct ? "green" : "red");
-    binButton.fillColor = ((selection === "bin") ? "green" : "darkgrey");
+    feedbackText.color = (correct ? 'green' : 'red');
+    binButton.fillColor = (selection === 'bin' ? 'green' : 'darkgrey');
     continueBtn_4.opacity = (correct ? 1.0 : 0.35);
     if (replayBtn_2.isClicked) {
         trainSound.isFinished = false;
         trainSound.play();
     }
-    if ((continueBtn_4.isClicked && correct)) {
+    if (continueBtn_4.isClicked && correct) {
         continueRoutine = false;
     }
-    
     if (trainSound.status === STARTED) {
         trainSound.isPlaying = true;
         if (t >= (trainSound.getDuration() + trainSound.tStart)) {
@@ -1851,7 +1853,7 @@ function trainingTrialRoutineEachFrame() {
     // *feedbackText* updates
     if (t >= 0.0 && feedbackText.status === PsychoJS.Status.NOT_STARTED) {
       // update params
-      feedbackText.setColor(new util.Color('white'), false);
+      feedbackText.setColor(new util.Color(correct), false);
       feedbackText.setText(feedbackMsg, false);
       // keep track of start time/frame for later
       feedbackText.tStart = t;  // (not accounting for frame time here)
@@ -1864,13 +1866,15 @@ function trainingTrialRoutineEachFrame() {
     // if feedbackText is active this frame...
     if (feedbackText.status === PsychoJS.Status.STARTED) {
       // update params
-      feedbackText.setColor(new util.Color('white'), false);
+      feedbackText.setColor(new util.Color(correct), false);
       feedbackText.setText(feedbackMsg, false);
     }
     
     
     // *replayBtn_2* updates
     if (t >= 0 && replayBtn_2.status === PsychoJS.Status.NOT_STARTED) {
+      // update params
+      replayBtn_2.setOpacity(1.0, false);
       // keep track of start time/frame for later
       replayBtn_2.tStart = t;  // (not accounting for frame time here)
       replayBtn_2.frameNStart = frameN;  // exact frame index
@@ -1881,6 +1885,8 @@ function trainingTrialRoutineEachFrame() {
     
     // if replayBtn_2 is active this frame...
     if (replayBtn_2.status === PsychoJS.Status.STARTED) {
+      // update params
+      replayBtn_2.setOpacity(1.0, false);
     }
     
     if (replayBtn_2.status === PsychoJS.Status.STARTED) {
@@ -2173,7 +2179,6 @@ function mainRoutineRoutineEnd(snapshot) {
 var mainTrialMaxDurationReached;
 var counterText;
 var bin_selected;
-var replay_used;
 var response_given;
 var rt_clock;
 var mainTrialMaxDuration;
@@ -2262,8 +2267,11 @@ function mainTrialRoutineEachFrame() {
             response_given = false;
         }
     }
+    
     binButton_2.fillColor = (bin_selected ? "green" : "darkgrey");
     continueBtn_5.opacity = (response_given ? 1.0 : 0.35);
+    replayBtn_3.opacity = replay_used ? 0.35 : 1.0;
+    
     if (((! replay_used) && replayBtn_3.isClicked)) {
         mainSound.isFinished = false;
         mainSound.play();
@@ -2360,6 +2368,8 @@ function mainTrialRoutineEachFrame() {
     
     // *replayBtn_3* updates
     if (t >= 0 && replayBtn_3.status === PsychoJS.Status.NOT_STARTED) {
+      // update params
+      replayBtn_3.setOpacity(1.0, false);
       // keep track of start time/frame for later
       replayBtn_3.tStart = t;  // (not accounting for frame time here)
       replayBtn_3.frameNStart = frameN;  // exact frame index
@@ -2370,6 +2380,8 @@ function mainTrialRoutineEachFrame() {
     
     // if replayBtn_3 is active this frame...
     if (replayBtn_3.status === PsychoJS.Status.STARTED) {
+      // update params
+      replayBtn_3.setOpacity(1.0, false);
     }
     
     if (replayBtn_3.status === PsychoJS.Status.STARTED) {
@@ -3056,7 +3068,6 @@ function thankYouScreenRoutineBegin(snapshot) {
     routineTimer.reset();
     thankYouScreenMaxDurationReached = false;
     // update component parameters for each repeat
-    // Run 'Begin Routine' code from code_2
     psychoJS._saveResults = 0;
     
     let filename = psychoJS._experiment._experimentName + "_" + psychoJS._experiment._datetime + ".csv";
