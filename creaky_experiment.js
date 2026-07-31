@@ -925,7 +925,7 @@ async function experimentInit() {
   thankYouText = new visual.TextStim({
     win: psychoJS.window,
     name: 'thankYouText',
-    text: 'Thank you! The experiment has been completed.\n\nPlease wait 5 seconds while your results are being saved.\n\nThe experiment window will close soon.',
+    text: 'Thank you! The experiment has been completed.\n\nPlease wait 5 seconds while your results are being saved.\n\nClick the button below to close the window.',
     font: 'Arial',
     units: undefined, 
     pos: [0, 0], draggable: false, height: 0.05,  wrapWidth: undefined, ori: 0.0,
