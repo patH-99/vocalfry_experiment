@@ -1853,7 +1853,7 @@ function trainingTrialRoutineEachFrame() {
     // *feedbackText* updates
     if (t >= 0.0 && feedbackText.status === PsychoJS.Status.NOT_STARTED) {
       // update params
-      feedbackText.setColor(new util.Color(correct), false);
+      feedbackText.setColor(new util.Color('white'), false);
       feedbackText.setText(feedbackMsg, false);
       // keep track of start time/frame for later
       feedbackText.tStart = t;  // (not accounting for frame time here)
@@ -1866,7 +1866,7 @@ function trainingTrialRoutineEachFrame() {
     // if feedbackText is active this frame...
     if (feedbackText.status === PsychoJS.Status.STARTED) {
       // update params
-      feedbackText.setColor(new util.Color(correct), false);
+      feedbackText.setColor(new util.Color('white'), false);
       feedbackText.setText(feedbackMsg, false);
     }
     
