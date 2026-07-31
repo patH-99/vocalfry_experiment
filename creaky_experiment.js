@@ -523,7 +523,7 @@ async function experimentInit() {
     units: undefined, 
     pos: [0, 0.15], draggable: false, height: 0.05,  wrapWidth: undefined, ori: 0.0,
     languageStyle: 'LTR',
-    color: new util.Color('white'),  opacity: undefined,
+    color: new util.Color('white'),  opacity: 1.0,
     depth: -7.0 
   });
   
@@ -1670,7 +1670,6 @@ function trainingTrialRoutineBegin(snapshot) {
     trainSlider.reset()
     arrowShape.setPos(arrowPos);
     trainLabel.setText(labelText);
-    feedbackText.setOpacity(None);
     // reset replayBtn_2 to account for continued clicks & clear times on/off
     replayBtn_2.reset()
     // reset continueBtn_4 to account for continued clicks & clear times on/off
@@ -1853,7 +1852,6 @@ function trainingTrialRoutineEachFrame() {
     // *feedbackText* updates
     if (t >= 0.0 && feedbackText.status === PsychoJS.Status.NOT_STARTED) {
       // update params
-      feedbackText.setColor(new util.Color('white'), false);
       feedbackText.setText(feedbackMsg, false);
       // keep track of start time/frame for later
       feedbackText.tStart = t;  // (not accounting for frame time here)
@@ -1866,7 +1864,6 @@ function trainingTrialRoutineEachFrame() {
     // if feedbackText is active this frame...
     if (feedbackText.status === PsychoJS.Status.STARTED) {
       // update params
-      feedbackText.setColor(new util.Color('white'), false);
       feedbackText.setText(feedbackMsg, false);
     }
     
