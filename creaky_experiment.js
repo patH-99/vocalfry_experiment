@@ -1288,7 +1288,6 @@ function introTrialRoutineEachFrame() {
     // Run 'Each Frame' code from introLogic
     if ((replayBtn.numClicks > prevReplayClicks)) {
         introSound.stop();
-        introSound.isFinished = false;
         introSound.play();
         prevReplayClicks = replayBtn.numClicks;
     }
