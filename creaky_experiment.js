@@ -77,9 +77,12 @@ flowScheduler.add(mainLoopLoopEnd);
 flowScheduler.add(mainFinishedRoutineBegin());
 flowScheduler.add(mainFinishedRoutineEachFrame());
 flowScheduler.add(mainFinishedRoutineEnd());
-flowScheduler.add(surveyRoutineRoutineBegin());
-flowScheduler.add(surveyRoutineRoutineEachFrame());
-flowScheduler.add(surveyRoutineRoutineEnd());
+const surveyLoopLoopScheduler = new Scheduler(psychoJS);
+flowScheduler.add(surveyLoopLoopBegin(surveyLoopLoopScheduler));
+flowScheduler.add(surveyLoopLoopScheduler);
+flowScheduler.add(surveyLoopLoopEnd);
+
+
 flowScheduler.add(thankYouScreenRoutineBegin());
 flowScheduler.add(thankYouScreenRoutineEachFrame());
 flowScheduler.add(thankYouScreenRoutineEnd());
@@ -206,7 +209,7 @@ psychoJS.start({
     {'name': 'stimuli/tad_m_c1_p3_h2_r3.wav', 'path': 'stimuli/tad_m_c1_p3_h2_r3.wav'},
     {'name': 'stimuli/tad_m_c2_p1_h-3_r2.wav', 'path': 'stimuli/tad_m_c2_p1_h-3_r2.wav'},
     {'name': 'stimuli/tad_m_c2_p1_h2_r2.wav', 'path': 'stimuli/tad_m_c2_p1_h2_r2.wav'},
-    {'name': 'conditions/survey.xlsx', 'path': 'conditions/survey.xlsx'},
+    {'name': 'conditions/survey_items.xlsx', 'path': 'conditions/survey_items.xlsx'},
   ]
 });
 
@@ -283,9 +286,12 @@ var breakContinueButton;
 var mainFinishedClock;
 var mainFinishedText;
 var mainFinishedButton;
-var surveyRoutineClock;
-var surveyForm;
-var submitBtn;
+var surveyQuestionClock;
+var qText;
+var textAnswerBox;
+var yesButton;
+var noButton;
+var surveyContinueBtn;
 var thankYouScreenClock;
 var thankYouText;
 var closeButton;
@@ -297,7 +303,7 @@ async function experimentInit() {
   welcomeText = new visual.TextStim({
     win: psychoJS.window,
     name: 'welcomeText',
-    text: 'Welcome to the experiment!\n\nIn this study you will listen to short recordings of speech and judge how strongly voices produce vocal fry.\n\nYou will first complete a short introduction and training phase to get familiar with the concept of vocal fry and with the task, followed by the main part of the experiment.\n\nPlease put on your headphones now and make sure the volume is at a comfortable level.',
+    text: 'In this study you will listen to short recordings of speech and judge how strongly voices produce vocal fry.\n\nYou will first complete a short introduction and training phase to get familiar with the concept of vocal fry and with the task, followed by the main part of the experiment.\n\nPlease put on your headphones now and make sure the volume is at a comfortable level.',
     font: 'Arial',
     units: undefined, 
     pos: [0, 0], draggable: false, height: 0.05,  wrapWidth: undefined, ori: 0.0,
@@ -458,7 +464,7 @@ async function experimentInit() {
     text: 'No vocal fry',
     font: 'Arial',
     pos: [(- 0.55), (- 0.15)],
-    size: [0.16, 0.16],
+    size: [0.25, 0.25],
     padding: null,
     anchor: 'center',
     ori: 0.0,
@@ -637,7 +643,7 @@ async function experimentInit() {
     text: 'No vocal fry',
     font: 'Arial',
     pos: [(- 0.55), (- 0.15)],
-    size: [0.16, 0.16],
+    size: [0.25, 0.25],
     padding: null,
     anchor: 'center',
     ori: 0.0,
@@ -802,26 +808,100 @@ async function experimentInit() {
   });
   mainFinishedButton.clock = new util.Clock();
   
-  // Initialize components for Routine "surveyRoutine"
-  surveyRoutineClock = new util.Clock();
-  surveyForm = new visual.Form({
-    win : psychoJS.window, name:'surveyForm',
-    items : 'conditions/survey.xlsx',
-    textHeight : 0.03,
-    font : 'Arial',
-    randomize : false,
-    size : [1.4, 0.8],
-    pos : [0, 0.05],
-    style : 'dark',
-    itemPadding : 0.05,
-    depth : -1
-  });
-  submitBtn = new visual.ButtonStim({
+  // Initialize components for Routine "surveyQuestion"
+  surveyQuestionClock = new util.Clock();
+  qText = new visual.TextStim({
     win: psychoJS.window,
-    name: 'submitBtn',
-    text: 'Submit',
+    name: 'qText',
+    text: '',
     font: 'Arial',
-    pos: [0, (- 0.42)],
+    units: undefined, 
+    pos: [0, 0.2], draggable: false, height: 0.05,  wrapWidth: undefined, ori: 0.0,
+    languageStyle: 'LTR',
+    color: new util.Color('white'),  opacity: undefined,
+    depth: -1.0 
+  });
+  
+  textAnswerBox = new visual.TextBox({
+    win: psychoJS.window,
+    name: 'textAnswerBox',
+    text: '',
+    placeholder: 'Type here...',
+    font: 'Arial',
+    pos: [0, 0], 
+    draggable: false,
+    letterHeight: 0.05,
+    lineSpacing: 1.0,
+    size: [0.8, 0.15],  units: undefined, 
+    ori: 0.0,
+    color: 'white', colorSpace: 'rgb',
+    fillColor: undefined, borderColor: undefined,
+    languageStyle: 'LTR',
+    bold: false, italic: false,
+    opacity: undefined,
+    padding: 0.0,
+    alignment: 'center',
+    overflow: 'visible',
+    editable: true,
+    multiline: true,
+    anchor: 'center',
+    depth: -2.0 
+  });
+  
+  yesButton = new visual.ButtonStim({
+    win: psychoJS.window,
+    name: 'yesButton',
+    text: 'Yes',
+    font: 'Arial',
+    pos: [(- 0.2), 0],
+    size: [0.3, 0.1],
+    padding: null,
+    anchor: 'center',
+    ori: 0.0,
+    units: psychoJS.window.units,
+    color: 'white',
+    fillColor: 'darkgrey',
+    borderColor: null,
+    colorSpace: 'rgb',
+    borderWidth: 0.0,
+    opacity: null,
+    depth: -3,
+    letterHeight: 0.05,
+    bold: true,
+    italic: false,
+  });
+  yesButton.clock = new util.Clock();
+  
+  noButton = new visual.ButtonStim({
+    win: psychoJS.window,
+    name: 'noButton',
+    text: 'No',
+    font: 'Arial',
+    pos: [0.2, 0],
+    size: [0.3, 0.1],
+    padding: null,
+    anchor: 'center',
+    ori: 0.0,
+    units: psychoJS.window.units,
+    color: 'white',
+    fillColor: 'darkgrey',
+    borderColor: null,
+    colorSpace: 'rgb',
+    borderWidth: 0.0,
+    opacity: null,
+    depth: -4,
+    letterHeight: 0.05,
+    bold: true,
+    italic: false,
+  });
+  noButton.clock = new util.Clock();
+  
+  surveyContinueBtn = new visual.ButtonStim({
+    win: psychoJS.window,
+    name: 'surveyContinueBtn',
+    text: 'Continue',
+    font: 'Arial',
+    pos: [0, (- 0.4)],
     size: [0.3, 0.08],
     padding: null,
     anchor: 'center',
@@ -833,19 +913,19 @@ async function experimentInit() {
     colorSpace: 'rgb',
     borderWidth: 0.0,
     opacity: null,
-    depth: -2,
+    depth: -5,
     letterHeight: 0.05,
     bold: true,
     italic: false,
   });
-  submitBtn.clock = new util.Clock();
+  surveyContinueBtn.clock = new util.Clock();
   
   // Initialize components for Routine "thankYouScreen"
   thankYouScreenClock = new util.Clock();
   thankYouText = new visual.TextStim({
     win: psychoJS.window,
     name: 'thankYouText',
-    text: 'Thank you! The experiment has been completed.\n\nPlease wait 5 seconds while your results are being saved.\n\nYou may then click the button below to close the window.',
+    text: 'Thank you! The experiment has been completed.\n\nPlease wait 5 seconds while your results are being saved.\n\nThe experiment window will close soon.',
     font: 'Arial',
     units: undefined, 
     pos: [0, 0], draggable: false, height: 0.05,  wrapWidth: undefined, ori: 0.0,
@@ -1157,8 +1237,6 @@ function trainingLoopLoopEndIteration(scheduler, snapshot) {
           psychoJS.experiment.nextEntry(snapshot);
         }
         scheduler.stop();
-      } else {
-        psychoJS.experiment.nextEntry(snapshot);
       }
     return Scheduler.Event.NEXT;
     }
@@ -1232,6 +1310,69 @@ function mainLoopLoopEndIteration(scheduler, snapshot) {
 }
 
 
+var surveyLoop;
+function surveyLoopLoopBegin(surveyLoopLoopScheduler, snapshot) {
+  return async function() {
+    TrialHandler.fromSnapshot(snapshot); // update internal variables (.thisN etc) of the loop
+    
+    // set up handler to look after randomisation of conditions etc
+    surveyLoop = new TrialHandler({
+      psychoJS: psychoJS,
+      nReps: 1, method: TrialHandler.Method.SEQUENTIAL,
+      extraInfo: expInfo, originPath: undefined,
+      trialList: 'conditions/survey_items.xlsx',
+      seed: undefined, name: 'surveyLoop'
+    });
+    psychoJS.experiment.addLoop(surveyLoop); // add the loop to the experiment
+    currentLoop = surveyLoop;  // we're now the current loop
+    
+    // Schedule all the trials in the trialList:
+    for (const thisSurveyLoop of surveyLoop) {
+      snapshot = surveyLoop.getSnapshot();
+      surveyLoopLoopScheduler.add(importConditions(snapshot));
+      surveyLoopLoopScheduler.add(surveyQuestionRoutineBegin(snapshot));
+      surveyLoopLoopScheduler.add(surveyQuestionRoutineEachFrame());
+      surveyLoopLoopScheduler.add(surveyQuestionRoutineEnd(snapshot));
+      surveyLoopLoopScheduler.add(surveyLoopLoopEndIteration(surveyLoopLoopScheduler, snapshot));
+    }
+    
+    return Scheduler.Event.NEXT;
+  }
+}
+
+
+async function surveyLoopLoopEnd() {
+  // terminate loop
+  psychoJS.experiment.removeLoop(surveyLoop);
+  // update the current loop from the ExperimentHandler
+  if (psychoJS.experiment._unfinishedLoops.length>0)
+    currentLoop = psychoJS.experiment._unfinishedLoops.at(-1);
+  else
+    currentLoop = psychoJS.experiment;  // so we use addData from the experiment
+  return Scheduler.Event.NEXT;
+}
+
+
+function surveyLoopLoopEndIteration(scheduler, snapshot) {
+  // ------Prepare for next entry------
+  return async function () {
+    if (typeof snapshot !== 'undefined') {
+      // ------Check if user ended loop early------
+      if (snapshot.finished) {
+        // Check for and save orphaned data
+        if (psychoJS.experiment.isEntryEmpty()) {
+          psychoJS.experiment.nextEntry(snapshot);
+        }
+        scheduler.stop();
+      } else {
+        psychoJS.experiment.nextEntry(snapshot);
+      }
+    return Scheduler.Event.NEXT;
+    }
+  };
+}
+
+
 var introTrialMaxDurationReached;
 var prevReplayClicks;
 var introTrialMaxDuration;
@@ -1286,16 +1427,24 @@ function introTrialRoutineEachFrame() {
     frameN = frameN + 1;// number of completed frames (so 0 is the first frame)
     // update/draw components on each frame
     // Run 'Each Frame' code from introLogic
-    if ((replayBtn.numClicks > prevReplayClicks)) {
-        introSound.stop();
-        introSound.isFinished = false;
-        introSound.tStart = t;
-        introSound.play();
+    if (introSound.status === STARTED) {
+        introSound.isPlaying = true;
+        if (t >= (introSound.getDuration() + introSound.tStart)) {
+            introSound.isFinished = true;
+        }
+    }
+    
+    if (replayBtn.numClicks > prevReplayClicks) {
+        if (introSound.isFinished) {
+            introSound.isFinished = false;
+            introSound.tStart = t;
+            introSound.status = PsychoJS.Status.STARTED;
+            introSound.play();
+        }
         prevReplayClicks = replayBtn.numClicks;
     }
-    if (continueBtn_2.isClicked) {
-        introSound.stop();
-    }
+    
+    replayBtn.opacity = introSound.isFinished ? 1.0 : 0.35;
     
     // *introductionText* updates
     if (t >= 0 && introductionText.status === PsychoJS.Status.NOT_STARTED) {
@@ -1740,7 +1889,6 @@ function trainingTrialRoutineEachFrame() {
     continueBtn_4.opacity = (correct ? 1.0 : 0.35);
     replay_click_now = replayBtn_2.isClicked;
     if ((replay_click_now && (! prevReplayStateTrain))) {
-        trainSound.stop();
         trainSound.isFinished = false;
         trainSound.tStart = t;
         trainSound.play();
@@ -2277,7 +2425,6 @@ function mainTrialRoutineEachFrame() {
     
     replay_click_now = replayBtn_3.isClicked;
     if ((!replay_used) && replay_click_now && (!prevReplayStateMain)) {
-        mainSound.stop();
         mainSound.isFinished = false;
         mainSound.tStart = t;
         mainSound.play();
@@ -2844,33 +2991,56 @@ function mainFinishedRoutineEnd(snapshot) {
 }
 
 
-var surveyRoutineMaxDurationReached;
-var surveyRoutineMaxDuration;
-var surveyRoutineComponents;
-function surveyRoutineRoutineBegin(snapshot) {
+var surveyQuestionMaxDurationReached;
+var is_text_type;
+var selected_choice;
+var prevYesState;
+var prevNoState;
+var prevContinueState;
+var surveyQuestionMaxDuration;
+var surveyQuestionComponents;
+function surveyQuestionRoutineBegin(snapshot) {
   return async function () {
     TrialHandler.fromSnapshot(snapshot); // ensure that .thisN vals are up to date
     
-    //--- Prepare to start Routine 'surveyRoutine' ---
+    //--- Prepare to start Routine 'surveyQuestion' ---
     t = 0;
     frameN = -1;
     continueRoutine = true; // until we're told otherwise
     // keep track of whether this Routine was forcibly ended
     routineForceEnded = false;
-    surveyRoutineClock.reset();
+    surveyQuestionClock.reset();
     routineTimer.reset();
-    surveyRoutineMaxDurationReached = false;
+    surveyQuestionMaxDurationReached = false;
     // update component parameters for each repeat
-    // reset submitBtn to account for continued clicks & clear times on/off
-    submitBtn.reset()
-    psychoJS.experiment.addData('surveyRoutine.started', globalClock.getTime());
-    surveyRoutineMaxDuration = null
-    // keep track of which components have finished
-    surveyRoutineComponents = [];
-    surveyRoutineComponents.push(surveyForm);
-    surveyRoutineComponents.push(submitBtn);
+    // Run 'Begin Routine' code from surveyQLogic
+    is_text_type = (qtype === "text");
+    selected_choice = "";
+    prevYesState = false;
+    prevNoState = false;
+    prevContinueState = false;
+    textAnswerBox.reset();
     
-    for (const thisComponent of surveyRoutineComponents)
+    qText.setText(qtext);
+    textAnswerBox.setText('');
+    textAnswerBox.refresh();
+    // reset yesButton to account for continued clicks & clear times on/off
+    yesButton.reset()
+    // reset noButton to account for continued clicks & clear times on/off
+    noButton.reset()
+    // reset surveyContinueBtn to account for continued clicks & clear times on/off
+    surveyContinueBtn.reset()
+    psychoJS.experiment.addData('surveyQuestion.started', globalClock.getTime());
+    surveyQuestionMaxDuration = null
+    // keep track of which components have finished
+    surveyQuestionComponents = [];
+    surveyQuestionComponents.push(qText);
+    surveyQuestionComponents.push(textAnswerBox);
+    surveyQuestionComponents.push(yesButton);
+    surveyQuestionComponents.push(noButton);
+    surveyQuestionComponents.push(surveyContinueBtn);
+    
+    for (const thisComponent of surveyQuestionComponents)
       if ('status' in thisComponent)
         thisComponent.status = PsychoJS.Status.NOT_STARTED;
     return Scheduler.Event.NEXT;
@@ -2878,124 +3048,209 @@ function surveyRoutineRoutineBegin(snapshot) {
 }
 
 
-var _pj;
-var formData;
-var all_required_answered;
-var is_required;
-var resp;
+var yes_click_now;
+var no_click_now;
+var current_answer;
 var answered;
-function surveyRoutineRoutineEachFrame() {
+var is_required;
+var continue_click_now;
+function surveyQuestionRoutineEachFrame() {
   return async function () {
-    //--- Loop for each frame of Routine 'surveyRoutine' ---
+    //--- Loop for each frame of Routine 'surveyQuestion' ---
     // get current time
-    t = surveyRoutineClock.getTime();
+    t = surveyQuestionClock.getTime();
     frameN = frameN + 1;// number of completed frames (so 0 is the first frame)
     // update/draw components on each frame
-    // Run 'Each Frame' code from surveyLogic
-    var _pj;
-    function _pj_snippets(container) {
-        function in_es6(left, right) {
-            if (((right instanceof Array) || ((typeof right) === "string"))) {
-                return (right.indexOf(left) > (- 1));
-            } else {
-                if (((right instanceof Map) || (right instanceof Set) || (right instanceof WeakMap) || (right instanceof WeakSet))) {
-                    return right.has(left);
-                } else {
-                    return (left in right);
-                }
-            }
+    // Run 'Each Frame' code from surveyQLogic
+    textAnswerBox.opacity = is_text_type ? 1.0 : 0.0;
+    yesButton.opacity = is_text_type ? 0.0 : (selected_choice !== 'Yes' ? 1.0 : 0.6);
+    noButton.opacity = is_text_type ? 0.0 : (selected_choice !== 'No' ? 1.0 : 0.6);
+    
+    yes_click_now = yesButton.isClicked;
+    no_click_now = noButton.isClicked;
+    if (!is_text_type) {
+        if (yes_click_now && !prevYesState) {
+            selected_choice = 'Yes';
         }
-        container["in_es6"] = in_es6;
-        return container;
-    }
-    _pj = {};
-    _pj_snippets(_pj);
-    formData = surveyForm.getData();
-    all_required_answered = true;
-    is_required = true;
-    resp = "";
-    answered = true;
-    for (var item, _pj_c = 0, _pj_a = formData, _pj_b = _pj_a.length; (_pj_c < _pj_b); _pj_c += 1) {
-        item = _pj_a[_pj_c];
-        if (_pj.in_es6(item["type"], ["heading", "description"])) {
-            continue;
-        }
-        is_required = (! _pj.in_es6(item["required"], [0, "0", false, "False", "false"]));
-        if ((! is_required)) {
-            continue;
-        }
-        resp = item["response"];
-        if ((item["type"] === "free text")) {
-            answered = (resp ? true : false);
-        } else {
-            answered = (((resp === 0) || resp) ? true : false);
-        }
-        if ((! answered)) {
-            all_required_answered = false;
-            break;
+        if (no_click_now && !prevNoState) {
+            selected_choice = 'No';
         }
     }
-    submitBtn.opacity = (all_required_answered ? 1.0 : 0.35);
-    if ((submitBtn.isClicked && all_required_answered)) {
+    prevYesState = yes_click_now;
+    prevNoState = no_click_now;
+    
+    if (is_text_type) {
+        current_answer = textAnswerBox.text;
+        answered = current_answer.trim() ? true : false;
+    } else {
+        current_answer = selected_choice;
+        answered = selected_choice ? true : false;
+    }
+    
+    is_required = (required !== 0);
+    
+    continue_click_now = surveyContinueBtn.isClicked;
+    surveyContinueBtn.opacity = (answered || !is_required) ? 1.0 : 0.35;
+    if (continue_click_now && !prevContinueState && (answered || !is_required)) {
+        psychoJS.experiment.addData('survey_' + qid, current_answer);
         continueRoutine = false;
     }
+    prevContinueState = continue_click_now;
     
-    
-    // *surveyForm* updates
-    if (t >= 0.0 && surveyForm.status === PsychoJS.Status.NOT_STARTED) {
+    // *qText* updates
+    if (t >= 0.0 && qText.status === PsychoJS.Status.NOT_STARTED) {
       // keep track of start time/frame for later
-      surveyForm.tStart = t;  // (not accounting for frame time here)
-      surveyForm.frameNStart = frameN;  // exact frame index
+      qText.tStart = t;  // (not accounting for frame time here)
+      qText.frameNStart = frameN;  // exact frame index
       
-      surveyForm.setAutoDraw(true);
+      qText.setAutoDraw(true);
     }
     
     
-    // if surveyForm is active this frame...
-    if (surveyForm.status === PsychoJS.Status.STARTED) {
+    // if qText is active this frame...
+    if (qText.status === PsychoJS.Status.STARTED) {
     }
     
     
-    // *submitBtn* updates
-    if (t >= 0 && submitBtn.status === PsychoJS.Status.NOT_STARTED) {
+    // *textAnswerBox* updates
+    if (t >= 0.0 && textAnswerBox.status === PsychoJS.Status.NOT_STARTED) {
       // keep track of start time/frame for later
-      submitBtn.tStart = t;  // (not accounting for frame time here)
-      submitBtn.frameNStart = frameN;  // exact frame index
+      textAnswerBox.tStart = t;  // (not accounting for frame time here)
+      textAnswerBox.frameNStart = frameN;  // exact frame index
       
-      submitBtn.setAutoDraw(true);
+      textAnswerBox.setAutoDraw(true);
     }
     
     
-    // if submitBtn is active this frame...
-    if (submitBtn.status === PsychoJS.Status.STARTED) {
+    // if textAnswerBox is active this frame...
+    if (textAnswerBox.status === PsychoJS.Status.STARTED) {
     }
     
-    if (submitBtn.status === PsychoJS.Status.STARTED) {
-      // check whether submitBtn has been pressed
-      if (submitBtn.isClicked) {
-        if (!submitBtn.wasClicked) {
+    
+    // *yesButton* updates
+    if (t >= 0 && yesButton.status === PsychoJS.Status.NOT_STARTED) {
+      // keep track of start time/frame for later
+      yesButton.tStart = t;  // (not accounting for frame time here)
+      yesButton.frameNStart = frameN;  // exact frame index
+      
+      yesButton.setAutoDraw(true);
+    }
+    
+    
+    // if yesButton is active this frame...
+    if (yesButton.status === PsychoJS.Status.STARTED) {
+    }
+    
+    if (yesButton.status === PsychoJS.Status.STARTED) {
+      // check whether yesButton has been pressed
+      if (yesButton.isClicked) {
+        if (!yesButton.wasClicked) {
           // store time of first click
-          submitBtn.timesOn.push(submitBtn.clock.getTime());
+          yesButton.timesOn.push(yesButton.clock.getTime());
           // store time clicked until
-          submitBtn.timesOff.push(submitBtn.clock.getTime());
+          yesButton.timesOff.push(yesButton.clock.getTime());
         } else {
           // update time clicked until;
-          submitBtn.timesOff[submitBtn.timesOff.length - 1] = submitBtn.clock.getTime();
+          yesButton.timesOff[yesButton.timesOff.length - 1] = yesButton.clock.getTime();
         }
-        if (!submitBtn.wasClicked) {
+        if (!yesButton.wasClicked) {
           
         }
-        // if submitBtn is still clicked next frame, it is not a new click
-        submitBtn.wasClicked = true;
+        // if yesButton is still clicked next frame, it is not a new click
+        yesButton.wasClicked = true;
       } else {
-        // if submitBtn is clicked next frame, it is a new click
-        submitBtn.wasClicked = false;
+        // if yesButton is clicked next frame, it is a new click
+        yesButton.wasClicked = false;
       }
     } else {
-      // keep clock at 0 if submitBtn hasn't started / has finished
-      submitBtn.clock.reset();
-      // if submitBtn is clicked next frame, it is a new click
-      submitBtn.wasClicked = false;
+      // keep clock at 0 if yesButton hasn't started / has finished
+      yesButton.clock.reset();
+      // if yesButton is clicked next frame, it is a new click
+      yesButton.wasClicked = false;
+    }
+    
+    // *noButton* updates
+    if (t >= 0 && noButton.status === PsychoJS.Status.NOT_STARTED) {
+      // keep track of start time/frame for later
+      noButton.tStart = t;  // (not accounting for frame time here)
+      noButton.frameNStart = frameN;  // exact frame index
+      
+      noButton.setAutoDraw(true);
+    }
+    
+    
+    // if noButton is active this frame...
+    if (noButton.status === PsychoJS.Status.STARTED) {
+    }
+    
+    if (noButton.status === PsychoJS.Status.STARTED) {
+      // check whether noButton has been pressed
+      if (noButton.isClicked) {
+        if (!noButton.wasClicked) {
+          // store time of first click
+          noButton.timesOn.push(noButton.clock.getTime());
+          // store time clicked until
+          noButton.timesOff.push(noButton.clock.getTime());
+        } else {
+          // update time clicked until;
+          noButton.timesOff[noButton.timesOff.length - 1] = noButton.clock.getTime();
+        }
+        if (!noButton.wasClicked) {
+          
+        }
+        // if noButton is still clicked next frame, it is not a new click
+        noButton.wasClicked = true;
+      } else {
+        // if noButton is clicked next frame, it is a new click
+        noButton.wasClicked = false;
+      }
+    } else {
+      // keep clock at 0 if noButton hasn't started / has finished
+      noButton.clock.reset();
+      // if noButton is clicked next frame, it is a new click
+      noButton.wasClicked = false;
+    }
+    
+    // *surveyContinueBtn* updates
+    if (t >= 0 && surveyContinueBtn.status === PsychoJS.Status.NOT_STARTED) {
+      // keep track of start time/frame for later
+      surveyContinueBtn.tStart = t;  // (not accounting for frame time here)
+      surveyContinueBtn.frameNStart = frameN;  // exact frame index
+      
+      surveyContinueBtn.setAutoDraw(true);
+    }
+    
+    
+    // if surveyContinueBtn is active this frame...
+    if (surveyContinueBtn.status === PsychoJS.Status.STARTED) {
+    }
+    
+    if (surveyContinueBtn.status === PsychoJS.Status.STARTED) {
+      // check whether surveyContinueBtn has been pressed
+      if (surveyContinueBtn.isClicked) {
+        if (!surveyContinueBtn.wasClicked) {
+          // store time of first click
+          surveyContinueBtn.timesOn.push(surveyContinueBtn.clock.getTime());
+          // store time clicked until
+          surveyContinueBtn.timesOff.push(surveyContinueBtn.clock.getTime());
+        } else {
+          // update time clicked until;
+          surveyContinueBtn.timesOff[surveyContinueBtn.timesOff.length - 1] = surveyContinueBtn.clock.getTime();
+        }
+        if (!surveyContinueBtn.wasClicked) {
+          
+        }
+        // if surveyContinueBtn is still clicked next frame, it is not a new click
+        surveyContinueBtn.wasClicked = true;
+      } else {
+        // if surveyContinueBtn is clicked next frame, it is a new click
+        surveyContinueBtn.wasClicked = false;
+      }
+    } else {
+      // keep clock at 0 if surveyContinueBtn hasn't started / has finished
+      surveyContinueBtn.clock.reset();
+      // if surveyContinueBtn is clicked next frame, it is a new click
+      surveyContinueBtn.wasClicked = false;
     }
     // check for quit (typically the Esc key)
     if (psychoJS.experiment.experimentEnded || psychoJS.eventManager.getKeys({keyList:['escape']}).length > 0) {
@@ -3009,7 +3264,7 @@ function surveyRoutineRoutineEachFrame() {
     }
     
     continueRoutine = false;  // reverts to True if at least one component still running
-    for (const thisComponent of surveyRoutineComponents)
+    for (const thisComponent of surveyQuestionComponents)
       if ('status' in thisComponent && thisComponent.status !== PsychoJS.Status.FINISHED) {
         continueRoutine = true;
         break;
@@ -3025,20 +3280,26 @@ function surveyRoutineRoutineEachFrame() {
 }
 
 
-function surveyRoutineRoutineEnd(snapshot) {
+function surveyQuestionRoutineEnd(snapshot) {
   return async function () {
-    //--- Ending Routine 'surveyRoutine' ---
-    for (const thisComponent of surveyRoutineComponents) {
+    //--- Ending Routine 'surveyQuestion' ---
+    for (const thisComponent of surveyQuestionComponents) {
       if (typeof thisComponent.setAutoDraw === 'function') {
         thisComponent.setAutoDraw(false);
       }
     }
-    psychoJS.experiment.addData('surveyRoutine.stopped', globalClock.getTime());
-    surveyForm.addDataToExp(psychoJS.experiment, 'rows');
-    psychoJS.experiment.addData('submitBtn.numClicks', submitBtn.numClicks);
-    psychoJS.experiment.addData('submitBtn.timesOn', submitBtn.timesOn);
-    psychoJS.experiment.addData('submitBtn.timesOff', submitBtn.timesOff);
-    // the Routine "surveyRoutine" was not non-slip safe, so reset the non-slip timer
+    psychoJS.experiment.addData('surveyQuestion.stopped', globalClock.getTime());
+    psychoJS.experiment.addData('textAnswerBox.text',textAnswerBox.text)
+    psychoJS.experiment.addData('yesButton.numClicks', yesButton.numClicks);
+    psychoJS.experiment.addData('yesButton.timesOn', yesButton.timesOn);
+    psychoJS.experiment.addData('yesButton.timesOff', yesButton.timesOff);
+    psychoJS.experiment.addData('noButton.numClicks', noButton.numClicks);
+    psychoJS.experiment.addData('noButton.timesOn', noButton.timesOn);
+    psychoJS.experiment.addData('noButton.timesOff', noButton.timesOff);
+    psychoJS.experiment.addData('surveyContinueBtn.numClicks', surveyContinueBtn.numClicks);
+    psychoJS.experiment.addData('surveyContinueBtn.timesOn', surveyContinueBtn.timesOn);
+    psychoJS.experiment.addData('surveyContinueBtn.timesOff', surveyContinueBtn.timesOff);
+    // the Routine "surveyQuestion" was not non-slip safe, so reset the non-slip timer
     routineTimer.reset();
     
     // Routines running outside a loop should always advance the datafile row
