@@ -1811,6 +1811,7 @@ var arrowPos;
 var labelText;
 var feedbackMsg;
 var prevReplayStateTrain;
+var prevReplayNumClicksTrain;
 var gotValidClick;
 var trainingTrialMaxDuration;
 var trainingTrialComponents;
@@ -1835,6 +1836,7 @@ function trainingTrialRoutineBegin(snapshot) {
     labelText = (stimType === "modal") ? "There is NO vocal fry at all." : "There is VERY STRONG vocal fry.";
     feedbackMsg = "";
     prevReplayStateTrain = false;
+    prevReplayNumClicksTrain = replayBtn_2.numClicks;
     // setup some python lists for storing info about the mouse
     gotValidClick = false; // until a click is received
     trainSound.isFinished = false;
@@ -1874,6 +1876,7 @@ function trainingTrialRoutineBegin(snapshot) {
 
 var rating;
 var replay_click_now;
+var replay_new_click;
 function trainingTrialRoutineEachFrame() {
   return async function () {
     //--- Loop for each frame of Routine 'trainingTrial' ---
@@ -1915,13 +1918,16 @@ function trainingTrialRoutineEachFrame() {
     continueBtn_4.opacity = (correct ? 1.0 : 0.35);
     
     replay_click_now = replayBtn_2.isClicked;
-    if (replay_click_now && !prevReplayStateTrain) {
+    replay_new_click = (replay_click_now && !prevReplayStateTrain) || (replayBtn_2.numClicks > prevReplayNumClicksTrain);
+    if (!replay_used && replay_new_click) {
         trainSound.isFinished = false;
         trainSound.tStart = t;
         trainSound.status = PsychoJS.Status.STARTED;
         trainSound.play();
     }
     prevReplayStateTrain = replay_click_now;
+    prevReplayNumClicksTrain = replayBtn_2.numClicks;
+    
     if ((continueBtn_4.isClicked && correct)) {
         continueRoutine = false;
     } 
@@ -2375,6 +2381,7 @@ var response_given;
 var rt_clock;
 var replay_used;
 var prevReplayStateMain;
+var prevReplayNumClicksMain;
 var mainTrialMaxDuration;
 var mainTrialComponents;
 function mainTrialRoutineBegin(snapshot) {
@@ -2398,8 +2405,10 @@ function mainTrialRoutineBegin(snapshot) {
     rating = 0;
     response_given = false;
     rt_clock = new util.Clock();
-    replay_used = false;          // Track if replay has been used during this trial
-    prevReplayStateMain = false;   // Edge detector state
+    replay_used = false;
+    prevReplayStateMain = replayBtn_3.isClicked;
+    prevReplayNumClicksMain = replayBtn_3.numClicks;
+    console.log('Trial file:', stimFile);
     // setup some python lists for storing info about the mouse_2
     gotValidClick = false; // until a click is received
     mainSound.isFinished = false;
@@ -2468,7 +2477,8 @@ function mainTrialRoutineEachFrame() {
     replayBtn_3.opacity = replay_used ? 0.35 : 1.0;
     
     replay_click_now = replayBtn_3.isClicked;
-    if (!replay_used && replay_click_now && !prevReplayStateMain) {
+    replay_new_click = (replay_click_now && !prevReplayStateMain) || (replayBtn_3.numClicks > prevReplayNumClicksMain);
+    if (!replay_used && replay_new_click) {
         mainSound.isFinished = false;
         mainSound.tStart = t;
         mainSound.status = PsychoJS.Status.STARTED;
@@ -2476,6 +2486,7 @@ function mainTrialRoutineEachFrame() {
         replay_used = true;
     }
     prevReplayStateMain = replay_click_now;
+    prevReplayNumClicksMain = replayBtn_3.numClicks;
     if ((continueBtn_5.isClicked && response_given)) {
         psychoJS.experiment.addData("rating", rating);
         psychoJS.experiment.addData("rt_sec", util.round(rt_clock.getTime(), 4));
