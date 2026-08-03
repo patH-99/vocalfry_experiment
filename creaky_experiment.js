@@ -267,6 +267,7 @@ var trainLabel;
 var feedbackText;
 var replayBtn_2;
 var continueBtn_4;
+var trialText;
 var mainRoutineClock;
 var mainInstructions;
 var continueBtn_6;
@@ -581,6 +582,18 @@ async function experimentInit() {
     italic: false,
   });
   continueBtn_4.clock = new util.Clock();
+  
+  trialText = new visual.TextStim({
+    win: psychoJS.window,
+    name: 'trialText',
+    text: 'You may replay the syllable as many times as you like.',
+    font: 'Arial',
+    units: undefined, 
+    pos: [0, 0.2], draggable: false, height: 0.02,  wrapWidth: undefined, ori: 0.0,
+    languageStyle: 'LTR',
+    color: new util.Color('white'),  opacity: undefined,
+    depth: -10.0 
+  });
   
   // Initialize components for Routine "mainRoutine"
   mainRoutineClock = new util.Clock();
@@ -1849,6 +1862,7 @@ function trainingTrialRoutineBegin(snapshot) {
     trainingTrialComponents.push(feedbackText);
     trainingTrialComponents.push(replayBtn_2);
     trainingTrialComponents.push(continueBtn_4);
+    trainingTrialComponents.push(trialText);
     
     for (const thisComponent of trainingTrialComponents)
       if ('status' in thisComponent)
@@ -1902,9 +1916,10 @@ function trainingTrialRoutineEachFrame() {
     
     replay_click_now = replayBtn_2.isClicked;
     if (replay_click_now && !prevReplayStateTrain) {
-        let replaySoundTrain = new sound.Sound({win: psychoJS.window, value: trainFile, secs: -1});
-        replaySoundTrain.setVolume(1.0);
-        replaySoundTrain.play();
+        trainSound.isFinished = false;
+        trainSound.tStart = t;
+        trainSound.status = PsychoJS.Status.STARTED;
+        trainSound.play();
     }
     prevReplayStateTrain = replay_click_now;
     if ((continueBtn_4.isClicked && correct)) {
@@ -2124,6 +2139,21 @@ function trainingTrialRoutineEachFrame() {
       // if continueBtn_4 is clicked next frame, it is a new click
       continueBtn_4.wasClicked = false;
     }
+    
+    // *trialText* updates
+    if (t >= 0.0 && trialText.status === PsychoJS.Status.NOT_STARTED) {
+      // keep track of start time/frame for later
+      trialText.tStart = t;  // (not accounting for frame time here)
+      trialText.frameNStart = frameN;  // exact frame index
+      
+      trialText.setAutoDraw(true);
+    }
+    
+    
+    // if trialText is active this frame...
+    if (trialText.status === PsychoJS.Status.STARTED) {
+    }
+    
     // check for quit (typically the Esc key)
     if (psychoJS.experiment.experimentEnded || psychoJS.eventManager.getKeys({keyList:['escape']}).length > 0) {
       return quitPsychoJS('The [Escape] key was pressed. Goodbye!', false);
@@ -2439,9 +2469,10 @@ function mainTrialRoutineEachFrame() {
     
     replay_click_now = replayBtn_3.isClicked;
     if (!replay_used && replay_click_now && !prevReplayStateMain) {
-        let replaySoundMain = new sound.Sound({win: psychoJS.window, value: stimFile, secs: -1});
-        replaySoundMain.setVolume(1.0);
-        replaySoundMain.play();
+        mainSound.isFinished = false;
+        mainSound.tStart = t;
+        mainSound.status = PsychoJS.Status.STARTED;
+        mainSound.play();
         replay_used = true;
     }
     prevReplayStateMain = replay_click_now;
@@ -3094,7 +3125,8 @@ function surveyQuestionRoutineEachFrame() {
     textAnswerBox.opacity = is_text_type ? 1.0 : 0.0;
     yesButton.opacity = is_text_type ? 0.0 : (selected_choice !== 'Yes' ? 1.0 : 0.6);
     noButton.opacity = is_text_type ? 0.0 : (selected_choice !== 'No' ? 1.0 : 0.6);
-    
+    yesButton.fillColor = (selected_choice === 'Yes') ? 'green' : 'darkgrey';
+    noButton.fillColor = (selected_choice === 'No') ? 'green' : 'darkgrey';
     yes_click_now = yesButton.isClicked;
     no_click_now = noButton.isClicked;
     if (!is_text_type) {
@@ -3107,7 +3139,6 @@ function surveyQuestionRoutineEachFrame() {
     }
     prevYesState = yes_click_now;
     prevNoState = no_click_now;
-    
     if (is_text_type) {
         current_answer = textAnswerBox.text;
         answered = current_answer.trim() ? true : false;
@@ -3115,9 +3146,7 @@ function surveyQuestionRoutineEachFrame() {
         current_answer = selected_choice;
         answered = selected_choice ? true : false;
     }
-    
     is_required = (required !== 0);
-    
     continue_click_now = surveyContinueBtn.isClicked;
     surveyContinueBtn.opacity = (answered || !is_required) ? 1.0 : 0.35;
     if (continue_click_now && !prevContinueState && (answered || !is_required)) {
