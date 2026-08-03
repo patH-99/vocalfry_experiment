@@ -1792,7 +1792,6 @@ function trainingRoutineRoutineEnd(snapshot) {
 
 
 var trainingTrialMaxDurationReached;
-var trainSoundDuration;
 var correct;
 var selection;
 var arrowPos;
@@ -1818,7 +1817,6 @@ function trainingTrialRoutineBegin(snapshot) {
     trainingTrialMaxDurationReached = false;
     // update component parameters for each repeat
     // Run 'Begin Routine' code from trainingLogic
-    trainSoundDuration = null;
     correct = false;
     selection = "";
     arrowPos = ((stimType === "modal") ? [(- 0.55), (- 0.015)] : [0.475, (- 0.015)]);
@@ -1865,6 +1863,7 @@ function trainingTrialRoutineBegin(snapshot) {
 
 var rating;
 var replay_click_now;
+var trainSoundDuration;
 function trainingTrialRoutineEachFrame() {
   return async function () {
     //--- Loop for each frame of Routine 'trainingTrial' ---
@@ -1888,16 +1887,6 @@ function trainingTrialRoutineEachFrame() {
             correct = ((stimType === "creaky") && (rating >= 90));
         } else {
             correct = false;
-        }
-    }
-    
-    if (trainSound.status === STARTED) {
-        trainSound.isPlaying = true;
-        if (trainSoundDuration === null) {
-            trainSoundDuration = trainSound.getDuration();
-        }
-        if (trainSoundDuration && t >= (trainSoundDuration + trainSound.tStart)) {
-            trainSound.isFinished = true;
         }
     }
     
@@ -2355,7 +2344,6 @@ function mainRoutineRoutineEnd(snapshot) {
 
 
 var mainTrialMaxDurationReached;
-var mainSoundDuration;
 var counterText;
 var bin_selected;
 var response_given;
@@ -2378,7 +2366,6 @@ function mainTrialRoutineBegin(snapshot) {
     mainTrialMaxDurationReached = false;
     // update component parameters for each repeat
     // Run 'Begin Routine' code from mainLogic
-    mainSoundDuration = null;
     trialCounter += 1;
     counterText = `${trialCounter} / ${totalTrials}`;
     bin_selected = false;
@@ -2422,6 +2409,7 @@ function mainTrialRoutineBegin(snapshot) {
 
 
 var slider_rating;
+var mainSoundDuration;
 function mainTrialRoutineEachFrame() {
   return async function () {
     //--- Loop for each frame of Routine 'mainTrial' ---
@@ -2447,17 +2435,6 @@ function mainTrialRoutineEachFrame() {
             response_given = true;
         } else {
             response_given = false;
-        }
-    }
-    
-    
-    if (mainSound.status === STARTED) {
-        mainSound.isPlaying = true;
-        if (mainSoundDuration === null) {
-            mainSoundDuration = mainSound.getDuration();
-        }
-        if (mainSoundDuration && t >= (mainSoundDuration + mainSound.tStart)) {
-            mainSound.isFinished = true;
         }
     }
     
