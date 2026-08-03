@@ -1863,7 +1863,6 @@ function trainingTrialRoutineBegin(snapshot) {
 
 var rating;
 var replay_click_now;
-var trainSoundDuration;
 function trainingTrialRoutineEachFrame() {
   return async function () {
     //--- Loop for each frame of Routine 'trainingTrial' ---
@@ -1903,9 +1902,10 @@ function trainingTrialRoutineEachFrame() {
     binButton.fillColor = ((selection === "bin") ? "green" : "darkgrey");
     continueBtn_4.opacity = (correct ? 1.0 : 0.35);
     replay_click_now = replayBtn_2.isClicked;
-    if ((replay_click_now && (! prevReplayStateTrain))) {
+    replay_click_now = replayBtn_2.isClicked;
+    if (replay_click_now && !prevReplayStateTrain) {
+        trainSound.stop();
         trainSound.isFinished = false;
-        trainSoundDuration = null;
         trainSound.tStart = t;
         trainSound.status = PsychoJS.Status.STARTED;
         trainSound.play();
@@ -2409,7 +2409,6 @@ function mainTrialRoutineBegin(snapshot) {
 
 
 var slider_rating;
-var mainSoundDuration;
 function mainTrialRoutineEachFrame() {
   return async function () {
     //--- Loop for each frame of Routine 'mainTrial' ---
@@ -2443,9 +2442,9 @@ function mainTrialRoutineEachFrame() {
     replayBtn_3.opacity = replay_used ? 0.35 : 1.0;
     
     replay_click_now = replayBtn_3.isClicked;
-    if ((!replay_used) && replay_click_now && (!prevReplayStateMain)) {
+    if (!replay_used && replay_click_now && !prevReplayStateMain) {
+        mainSound.stop();
         mainSound.isFinished = false;
-        mainSoundDuration = null;
         mainSound.tStart = t;
         mainSound.status = PsychoJS.Status.STARTED;
         mainSound.play();
