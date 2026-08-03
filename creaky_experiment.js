@@ -280,6 +280,7 @@ var mainSlider;
 var replayBtn_3;
 var continueBtn_5;
 var trialCounterText;
+var mainText;
 var breakScreenClock;
 var breakText;
 var breakContinueButton;
@@ -303,7 +304,7 @@ async function experimentInit() {
   welcomeText = new visual.TextStim({
     win: psychoJS.window,
     name: 'welcomeText',
-    text: 'In this study you will listen to short recordings of speech and judge how strongly voices produce vocal fry.\n\nYou will first complete a short introduction and training phase to get familiar with the concept of vocal fry and with the task, followed by the main part of the experiment.\n\nPlease put on your headphones now and make sure the volume is at a comfortable level.',
+    text: 'In this study you will listen to short recordings of speech and judge how strongly voices produce vocal fry.\n\nYou will first complete a short introduction to become familiar with the concept of vocal fry and with the task, which is followed by the main part of the experiment.\n\nPlease put on your headphones now and make sure the volume is at a comfortable level.',
     font: 'Arial',
     units: undefined, 
     pos: [0, 0], draggable: false, height: 0.05,  wrapWidth: undefined, ori: 0.0,
@@ -411,7 +412,7 @@ async function experimentInit() {
   text = new visual.TextStim({
     win: psychoJS.window,
     name: 'text',
-    text: 'You will now hear pairs of similar-sounding words which have been synthesized. In each pair, one version does not contain vocal fry at all and the other contains very strong vocal fry.\n\nWatch where the arrow points and read the label, then click that spot on the scale. Once you’ve selected the highlighted spot, click Continue to move on to the next sound.',
+    text: 'You will now hear pairs of similar-sounding syllables which have been synthesized. In each pair, one version does not contain vocal fry at all and the other contains very strong vocal fry.\n\nWatch where the arrow points and read the label, then click that spot on the scale. Once you’ve selected the highlighted spot, click Continue to move on to the next sound.',
     font: 'Arial',
     units: undefined, 
     pos: [0, 0], draggable: false, height: 0.05,  wrapWidth: undefined, ori: 0.0,
@@ -586,7 +587,7 @@ async function experimentInit() {
   mainInstructions = new visual.TextStim({
     win: psychoJS.window,
     name: 'mainInstructions',
-    text: 'Welcome to the main part of the experiment!\n\nYou will listen to a series of sounds. After each one, rate whether you hear vocal fry in the sound and, if so, how strong the vocal fry is.',
+    text: 'Now begins the main part of the experiment.\n\nYou will listen to a series of syllables. After each one, rate whether you hear vocal fry in the sound, and if so, how strong the vocal fry is.',
     font: 'Arial',
     units: undefined, 
     pos: [0, 0], draggable: false, height: 0.05,  wrapWidth: undefined, ori: 0.0,
@@ -730,6 +731,18 @@ async function experimentInit() {
     languageStyle: 'LTR',
     color: new util.Color('grey'),  opacity: undefined,
     depth: -7.0 
+  });
+  
+  mainText = new visual.TextStim({
+    win: psychoJS.window,
+    name: 'mainText',
+    text: 'Select whether you hear vocal fry, and if yes, how strong it is.\n\nYou may replay the sound once.',
+    font: 'Arial',
+    units: undefined, 
+    pos: [0, 0.2], draggable: false, height: 0.05,  wrapWidth: undefined, ori: 0.0,
+    languageStyle: 'LTR',
+    color: new util.Color('white'),  opacity: undefined,
+    depth: -8.0 
   });
   
   // Initialize components for Routine "breakScreen"
@@ -925,7 +938,7 @@ async function experimentInit() {
   thankYouText = new visual.TextStim({
     win: psychoJS.window,
     name: 'thankYouText',
-    text: 'Thank you! The experiment has been completed.\n\nPlease wait 5 seconds while your results are being saved.\n\nClick the button below to close the window.',
+    text: 'Thank you! The experiment has been completed.\n\nPlease wait 5 seconds while your results are being saved.\n\nThen, click the button below to close the experiment window.',
     font: 'Arial',
     units: undefined, 
     pos: [0, 0], draggable: false, height: 0.05,  wrapWidth: undefined, ori: 0.0,
@@ -1779,6 +1792,7 @@ function trainingRoutineRoutineEnd(snapshot) {
 
 
 var trainingTrialMaxDurationReached;
+var trainSoundDuration;
 var correct;
 var selection;
 var arrowPos;
@@ -1804,6 +1818,7 @@ function trainingTrialRoutineBegin(snapshot) {
     trainingTrialMaxDurationReached = false;
     // update component parameters for each repeat
     // Run 'Begin Routine' code from trainingLogic
+    trainSoundDuration = null;
     correct = false;
     selection = "";
     arrowPos = ((stimType === "modal") ? [(- 0.55), (- 0.015)] : [0.475, (- 0.015)]);
@@ -1875,6 +1890,17 @@ function trainingTrialRoutineEachFrame() {
             correct = false;
         }
     }
+    
+    if (trainSound.status === STARTED) {
+        trainSound.isPlaying = true;
+        if (trainSoundDuration === null) {
+            trainSoundDuration = trainSound.getDuration();
+        }
+        if (trainSoundDuration && t >= (trainSoundDuration + trainSound.tStart)) {
+            trainSound.isFinished = true;
+        }
+    }
+    
     if ((! selection)) {
         feedbackMsg = "";
     } else {
@@ -1890,7 +1916,9 @@ function trainingTrialRoutineEachFrame() {
     replay_click_now = replayBtn_2.isClicked;
     if ((replay_click_now && (! prevReplayStateTrain))) {
         trainSound.isFinished = false;
+        trainSoundDuration = null;
         trainSound.tStart = t;
+        trainSound.status = PsychoJS.Status.STARTED;
         trainSound.play();
     }
     prevReplayStateTrain = replay_click_now;
@@ -2327,6 +2355,7 @@ function mainRoutineRoutineEnd(snapshot) {
 
 
 var mainTrialMaxDurationReached;
+var mainSoundDuration;
 var counterText;
 var bin_selected;
 var response_given;
@@ -2349,6 +2378,7 @@ function mainTrialRoutineBegin(snapshot) {
     mainTrialMaxDurationReached = false;
     // update component parameters for each repeat
     // Run 'Begin Routine' code from mainLogic
+    mainSoundDuration = null;
     trialCounter += 1;
     counterText = `${trialCounter} / ${totalTrials}`;
     bin_selected = false;
@@ -2381,6 +2411,7 @@ function mainTrialRoutineBegin(snapshot) {
     mainTrialComponents.push(replayBtn_3);
     mainTrialComponents.push(continueBtn_5);
     mainTrialComponents.push(trialCounterText);
+    mainTrialComponents.push(mainText);
     
     for (const thisComponent of mainTrialComponents)
       if ('status' in thisComponent)
@@ -2419,6 +2450,17 @@ function mainTrialRoutineEachFrame() {
         }
     }
     
+    
+    if (mainSound.status === STARTED) {
+        mainSound.isPlaying = true;
+        if (mainSoundDuration === null) {
+            mainSoundDuration = mainSound.getDuration();
+        }
+        if (mainSoundDuration && t >= (mainSoundDuration + mainSound.tStart)) {
+            mainSound.isFinished = true;
+        }
+    }
+    
     binButton_2.fillColor = (bin_selected ? "green" : "darkgrey");
     continueBtn_5.opacity = (response_given ? 1.0 : 0.35);
     replayBtn_3.opacity = replay_used ? 0.35 : 1.0;
@@ -2426,7 +2468,9 @@ function mainTrialRoutineEachFrame() {
     replay_click_now = replayBtn_3.isClicked;
     if ((!replay_used) && replay_click_now && (!prevReplayStateMain)) {
         mainSound.isFinished = false;
+        mainSoundDuration = null;
         mainSound.tStart = t;
+        mainSound.status = PsychoJS.Status.STARTED;
         mainSound.play();
         replay_used = true;
     }
@@ -2616,6 +2660,21 @@ function mainTrialRoutineEachFrame() {
     
     // if trialCounterText is active this frame...
     if (trialCounterText.status === PsychoJS.Status.STARTED) {
+    }
+    
+    
+    // *mainText* updates
+    if (t >= 0.0 && mainText.status === PsychoJS.Status.NOT_STARTED) {
+      // keep track of start time/frame for later
+      mainText.tStart = t;  // (not accounting for frame time here)
+      mainText.frameNStart = frameN;  // exact frame index
+      
+      mainText.setAutoDraw(true);
+    }
+    
+    
+    // if mainText is active this frame...
+    if (mainText.status === PsychoJS.Status.STARTED) {
     }
     
     // check for quit (typically the Esc key)
