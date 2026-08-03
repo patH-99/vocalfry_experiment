@@ -589,7 +589,7 @@ async function experimentInit() {
     text: 'You may replay the syllable as many times as you like.',
     font: 'Arial',
     units: undefined, 
-    pos: [0, 0.2], draggable: false, height: 0.02,  wrapWidth: undefined, ori: 0.0,
+    pos: [0, 0.25], draggable: false, height: 0.02,  wrapWidth: undefined, ori: 0.0,
     languageStyle: 'LTR',
     color: new util.Color('white'),  opacity: undefined,
     depth: -10.0 
