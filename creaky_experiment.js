@@ -356,7 +356,7 @@ async function experimentInit() {
     text: '',
     font: 'Arial',
     units: undefined, 
-    pos: [0, 2], draggable: false, height: 0.05,  wrapWidth: undefined, ori: 0.0,
+    pos: [0, 0.2], draggable: false, height: 0.05,  wrapWidth: undefined, ori: 0.0,
     languageStyle: 'LTR',
     color: new util.Color('white'),  opacity: undefined,
     depth: -2.0 
@@ -698,7 +698,7 @@ async function experimentInit() {
     text: 'Select whether you hear vocal fry, and if yes, how strong it is.',
     font: 'Arial',
     units: undefined, 
-    pos: [0, 0.2], draggable: false, height: 0.05,  wrapWidth: undefined, ori: 0.0,
+    pos: [0, 0.25], draggable: false, height: 0.05,  wrapWidth: undefined, ori: 0.0,
     languageStyle: 'LTR',
     color: new util.Color('white'),  opacity: undefined,
     depth: -7.0 
@@ -1380,6 +1380,7 @@ function introTrialRoutineBegin(snapshot) {
     // update component parameters for each repeat
     // Run 'Begin Routine' code from introLogic
     nPlays = 0;
+    continueBtn_2.opacity = 0.35;
     introSound.isFinished = false;
     introSound.setValue(introFile);
     introSound.setVolume(1.0);
@@ -1419,6 +1420,12 @@ function introTrialRoutineEachFrame() {
     if (key_space_3.getKeys({keyList: ['space'], waitRelease: false}).length > 0) {
         introSound.play();
         nPlays += 1;
+    }
+    
+    continueBtn_2.opacity = (nPlays > 0) ? 1.0 : 0.35;
+    
+    if (continueBtn_2.isClicked && nPlays > 0) {
+        continueRoutine = false;
     }
     if (introSound.status === STARTED) {
         introSound.isPlaying = true;
@@ -1847,16 +1854,16 @@ function trainingTrialRoutineEachFrame() {
     }
     
     // scoring
-    if (selection === "bin") {
+    if (selection === "bin" && nPlays > 0) {
         correct = (stimType === "modal");
-    } else if (selection === "slider") {
+    } else if (selection === "slider" && nPlays > 0) {
         correct = ((stimType === "creaky") && (rating >= 90));
     } else {
         correct = false;
     }
     
     // feedback
-    feedbackMsg = (!selection) ? "" : (correct ? "You may now continue to the next sound!" : "Try again.");
+    feedbackMsg = (!selection) ? "" : (correct ? "You may now continue to the next syllable!" : "Play the syllable and try again.");
     feedbackText.color = (correct ? "green" : "red");
     binButton.fillColor = ((selection === "bin") ? "green" : "darkgrey");
     continueBtn_4.opacity = (correct ? 1.0 : 0.35);
@@ -2391,10 +2398,10 @@ function mainTrialRoutineEachFrame() {
         bin_selected = false;
     }
     
-    if (bin_selected) {
+    if (bin_selected && nPlays > 0) {
         rating = 0;
         response_given = true;
-    } else if (slider_rating !== undefined && slider_rating !== null) {
+    } else if (slider_rating !== undefined && slider_rating !== null && nPlays > 0) {
         rating = slider_rating;
         response_given = true;
     } else {
