@@ -1,7 +1,7 @@
 # Vocal Fry Experiment
 An online pilot experiment about vocal fry conducted at Stockholm University.
 
-The experiment takes about 15 minutes to complete.
+The experiment takes about 10-15 minutes to complete.
 Please, run the experiment in a quiet environment while using headphones.
 
 If you have questions or concerns, please contact Patrik Hrabánek at patrik.hrabanek@ling.su.se
