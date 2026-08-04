@@ -1415,8 +1415,6 @@ function introTrialRoutineEachFrame() {
     frameN = frameN + 1;// number of completed frames (so 0 is the first frame)
     // update/draw components on each frame
     // Run 'Each Frame' code from introLogic
-    introductionText.text = introText;
-    
     // play the sound once per space press
     if (key_space_3.getKeys({keyList: ['space'], waitRelease: false}).length > 0) {
         introSound.play();
