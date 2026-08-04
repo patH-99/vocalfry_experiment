@@ -1,4 +1,4 @@
-/************************** 
+﻿/************************** 
  * Creaky_Experiment *
  **************************/
 
@@ -301,7 +301,7 @@ async function experimentInit() {
   welcomeText = new visual.TextStim({
     win: psychoJS.window,
     name: 'welcomeText',
-    text: 'In this study you will listen to short recordings of speech and judge how strongly they speak with vocal fry.\n\nYou will first complete a short introduction to become familiar with the concept of vocal fry and with the task, which is followed by the main part of the experiment.\n\nPlease put on your headphones now and make sure the volume is at a comfortable level.',
+    text: 'In this study you will listen to short recordings of speakers and judge how strongly they speak with vocal fry.\n\nYou will first complete a short introduction to become familiar with the concept of vocal fry and with the task, which is followed by the main part of the experiment.\n\nPlease put on your headphones now and make sure the volume is at a comfortable level.',
     font: 'Arial',
     units: undefined, 
     pos: [0, 0], draggable: false, height: 0.05,  wrapWidth: undefined, ori: 0.0,
