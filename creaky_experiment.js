@@ -103,9 +103,9 @@ psychoJS.start({
     {'name': 'introductory_stimuli/creak_m_2.wav', 'path': 'introductory_stimuli/creak_m_2.wav'},
     {'name': 'introductory_stimuli/creak_f_3.wav', 'path': 'introductory_stimuli/creak_f_3.wav'},
     {'name': 'introductory_stimuli/creak_m_3.wav', 'path': 'introductory_stimuli/creak_m_3.wav'},
-    {'name': 'conditions/training.xlsx', 'path': 'conditions/training.xlsx'},
-    {'name': 'training_stimuli/chat_modal.wav', 'path': 'training_stimuli/chat_modal.wav'},
+    {'name': 'conditions/training_sounds.xlsx', 'path': 'conditions/training_sounds.xlsx'},
     {'name': 'training_stimuli/chat_creaky.wav', 'path': 'training_stimuli/chat_creaky.wav'},
+    {'name': 'training_stimuli/chat_modal.wav', 'path': 'training_stimuli/chat_modal.wav'},
     {'name': 'training_stimuli/zat_modal.wav', 'path': 'training_stimuli/zat_modal.wav'},
     {'name': 'training_stimuli/zat_creaky.wav', 'path': 'training_stimuli/zat_creaky.wav'},
     {'name': 'training_stimuli/vop_modal.wav', 'path': 'training_stimuli/vop_modal.wav'},
@@ -1168,7 +1168,7 @@ function trainingLoopLoopBegin(trainingLoopLoopScheduler, snapshot) {
       psychoJS: psychoJS,
       nReps: 1, method: TrialHandler.Method.SEQUENTIAL,
       extraInfo: expInfo, originPath: undefined,
-      trialList: 'conditions/training.xlsx',
+      trialList: 'conditions/training_sounds.xlsx',
       seed: undefined, name: 'trainingLoop'
     });
     psychoJS.experiment.addLoop(trainingLoop); // add the loop to the experiment
