@@ -215,9 +215,6 @@ psychoJS.start({
 
 psychoJS.experimentLogger.setLevel(core.Logger.ServerLevel.INFO);
 
-
-var currentLoop;
-var frameDur;
 async function updateInfo() {
   currentLoop = psychoJS.experiment;  // right now there are no loops
   expInfo['date'] = util.MonotonicClock.getDateStr();  // add a simple timestamp
@@ -245,67 +242,13 @@ async function updateInfo() {
   return Scheduler.Event.NEXT;
 }
 
-
-var welcomeRoutineClock;
-var welcomeText;
-var continueBtn;
-var introTrialClock;
-var introductionText;
-var introSound;
-var replayBtn;
-var continueBtn_2;
-var trainingRoutineClock;
-var text;
-var continueBtn_3;
-var trainingTrialClock;
-var mouse;
-var trainSound;
-var binButton;
-var trainSlider;
-var arrowShape;
-var trainLabel;
-var feedbackText;
-var replayBtn_2;
-var continueBtn_4;
-var trialText;
-var mainRoutineClock;
-var mainInstructions;
-var continueBtn_6;
-var mainTrialClock;
-var trialCounter;
-var totalTrials;
-var mouse_2;
-var mainSound;
-var binButton_2;
-var mainSlider;
-var replayBtn_3;
-var continueBtn_5;
-var trialCounterText;
-var mainText;
-var breakScreenClock;
-var breakText;
-var breakContinueButton;
-var mainFinishedClock;
-var mainFinishedText;
-var mainFinishedButton;
-var surveyQuestionClock;
-var qText;
-var textAnswerBox;
-var yesButton;
-var noButton;
-var surveyContinueBtn;
-var thankYouScreenClock;
-var thankYouText;
-var closeButton;
-var globalClock;
-var routineTimer;
 async function experimentInit() {
   // Initialize components for Routine "welcomeRoutine"
   welcomeRoutineClock = new util.Clock();
   welcomeText = new visual.TextStim({
     win: psychoJS.window,
     name: 'welcomeText',
-    text: 'In this study you will listen to short recordings of speech and judge how strongly voices produce vocal fry.\n\nYou will first complete a short introduction to become familiar with the concept of vocal fry and with the task, which is followed by the main part of the experiment.\n\nPlease put on your headphones now and make sure the volume is at a comfortable level.',
+    text: 'In this study you will listen to short recordings of speech and judge how strongly they speak with vocal fry.\n\nYou will first complete a short introduction to become familiar with the concept of vocal fry and with the task, which is followed by the main part of the experiment.\n\nPlease put on your headphones now and make sure the volume is at a comfortable level.',
     font: 'Arial',
     units: undefined, 
     pos: [0, 0], draggable: false, height: 0.05,  wrapWidth: undefined, ori: 0.0,
@@ -991,14 +934,6 @@ async function experimentInit() {
   return Scheduler.Event.NEXT;
 }
 
-
-var t;
-var frameN;
-var continueRoutine;
-var routineForceEnded;
-var welcomeRoutineMaxDurationReached;
-var welcomeRoutineMaxDuration;
-var welcomeRoutineComponents;
 function welcomeRoutineRoutineBegin(snapshot) {
   return async function () {
     TrialHandler.fromSnapshot(snapshot); // ensure that .thisN vals are up to date
@@ -1028,7 +963,6 @@ function welcomeRoutineRoutineBegin(snapshot) {
     return Scheduler.Event.NEXT;
   }
 }
-
 
 function welcomeRoutineRoutineEachFrame() {
   return async function () {
@@ -1123,7 +1057,6 @@ function welcomeRoutineRoutineEachFrame() {
   };
 }
 
-
 function welcomeRoutineRoutineEnd(snapshot) {
   return async function () {
     //--- Ending Routine 'welcomeRoutine' ---
@@ -1147,8 +1080,6 @@ function welcomeRoutineRoutineEnd(snapshot) {
   }
 }
 
-
-var introLoop;
 function introLoopLoopBegin(introLoopLoopScheduler, snapshot) {
   return async function() {
     TrialHandler.fromSnapshot(snapshot); // update internal variables (.thisN etc) of the loop
@@ -1178,7 +1109,6 @@ function introLoopLoopBegin(introLoopLoopScheduler, snapshot) {
   }
 }
 
-
 async function introLoopLoopEnd() {
   // terminate loop
   psychoJS.experiment.removeLoop(introLoop);
@@ -1189,7 +1119,6 @@ async function introLoopLoopEnd() {
     currentLoop = psychoJS.experiment;  // so we use addData from the experiment
   return Scheduler.Event.NEXT;
 }
-
 
 function introLoopLoopEndIteration(scheduler, snapshot) {
   // ------Prepare for next entry------
@@ -1208,8 +1137,6 @@ function introLoopLoopEndIteration(scheduler, snapshot) {
   };
 }
 
-
-var trainingLoop;
 function trainingLoopLoopBegin(trainingLoopLoopScheduler, snapshot) {
   return async function() {
     TrialHandler.fromSnapshot(snapshot); // update internal variables (.thisN etc) of the loop
@@ -1239,7 +1166,6 @@ function trainingLoopLoopBegin(trainingLoopLoopScheduler, snapshot) {
   }
 }
 
-
 async function trainingLoopLoopEnd() {
   // terminate loop
   psychoJS.experiment.removeLoop(trainingLoop);
@@ -1250,7 +1176,6 @@ async function trainingLoopLoopEnd() {
     currentLoop = psychoJS.experiment;  // so we use addData from the experiment
   return Scheduler.Event.NEXT;
 }
-
 
 function trainingLoopLoopEndIteration(scheduler, snapshot) {
   // ------Prepare for next entry------
@@ -1269,8 +1194,6 @@ function trainingLoopLoopEndIteration(scheduler, snapshot) {
   };
 }
 
-
-var mainLoop;
 function mainLoopLoopBegin(mainLoopLoopScheduler, snapshot) {
   return async function() {
     TrialHandler.fromSnapshot(snapshot); // update internal variables (.thisN etc) of the loop
@@ -1303,7 +1226,6 @@ function mainLoopLoopBegin(mainLoopLoopScheduler, snapshot) {
   }
 }
 
-
 async function mainLoopLoopEnd() {
   // terminate loop
   psychoJS.experiment.removeLoop(mainLoop);
@@ -1314,7 +1236,6 @@ async function mainLoopLoopEnd() {
     currentLoop = psychoJS.experiment;  // so we use addData from the experiment
   return Scheduler.Event.NEXT;
 }
-
 
 function mainLoopLoopEndIteration(scheduler, snapshot) {
   // ------Prepare for next entry------
@@ -1335,8 +1256,6 @@ function mainLoopLoopEndIteration(scheduler, snapshot) {
   };
 }
 
-
-var surveyLoop;
 function surveyLoopLoopBegin(surveyLoopLoopScheduler, snapshot) {
   return async function() {
     TrialHandler.fromSnapshot(snapshot); // update internal variables (.thisN etc) of the loop
@@ -1366,7 +1285,6 @@ function surveyLoopLoopBegin(surveyLoopLoopScheduler, snapshot) {
   }
 }
 
-
 async function surveyLoopLoopEnd() {
   // terminate loop
   psychoJS.experiment.removeLoop(surveyLoop);
@@ -1377,7 +1295,6 @@ async function surveyLoopLoopEnd() {
     currentLoop = psychoJS.experiment;  // so we use addData from the experiment
   return Scheduler.Event.NEXT;
 }
-
 
 function surveyLoopLoopEndIteration(scheduler, snapshot) {
   // ------Prepare for next entry------
@@ -1398,11 +1315,6 @@ function surveyLoopLoopEndIteration(scheduler, snapshot) {
   };
 }
 
-
-var introTrialMaxDurationReached;
-var prevReplayClicks;
-var introTrialMaxDuration;
-var introTrialComponents;
 function introTrialRoutineBegin(snapshot) {
   return async function () {
     TrialHandler.fromSnapshot(snapshot); // ensure that .thisN vals are up to date
@@ -1419,7 +1331,6 @@ function introTrialRoutineBegin(snapshot) {
     // update component parameters for each repeat
     // Run 'Begin Routine' code from introLogic
     prevReplayClicks = 0;
-    
     introductionText.setText(introText);
     introSound.isFinished = false;
     introSound.setValue(introFile);
@@ -1444,7 +1355,6 @@ function introTrialRoutineBegin(snapshot) {
   }
 }
 
-
 function introTrialRoutineEachFrame() {
   return async function () {
     //--- Loop for each frame of Routine 'introTrial' ---
@@ -1459,7 +1369,6 @@ function introTrialRoutineEachFrame() {
             introSound.isFinished = true;
         }
     }
-    
     if (replayBtn.numClicks > prevReplayClicks) {
         if (introSound.isFinished) {
             introSound.isFinished = false;
@@ -1623,7 +1532,6 @@ function introTrialRoutineEachFrame() {
   };
 }
 
-
 function introTrialRoutineEnd(snapshot) {
   return async function () {
     //--- Ending Routine 'introTrial' ---
@@ -1651,10 +1559,6 @@ function introTrialRoutineEnd(snapshot) {
   }
 }
 
-
-var trainingRoutineMaxDurationReached;
-var trainingRoutineMaxDuration;
-var trainingRoutineComponents;
 function trainingRoutineRoutineBegin(snapshot) {
   return async function () {
     TrialHandler.fromSnapshot(snapshot); // ensure that .thisN vals are up to date
@@ -1684,7 +1588,6 @@ function trainingRoutineRoutineBegin(snapshot) {
     return Scheduler.Event.NEXT;
   }
 }
-
 
 function trainingRoutineRoutineEachFrame() {
   return async function () {
@@ -1779,7 +1682,6 @@ function trainingRoutineRoutineEachFrame() {
   };
 }
 
-
 function trainingRoutineRoutineEnd(snapshot) {
   return async function () {
     //--- Ending Routine 'trainingRoutine' ---
@@ -1803,18 +1705,6 @@ function trainingRoutineRoutineEnd(snapshot) {
   }
 }
 
-
-var trainingTrialMaxDurationReached;
-var correct;
-var selection;
-var arrowPos;
-var labelText;
-var feedbackMsg;
-var prevReplayStateTrain;
-var prevReplayNumClicksTrain;
-var gotValidClick;
-var trainingTrialMaxDuration;
-var trainingTrialComponents;
 function trainingTrialRoutineBegin(snapshot) {
   return async function () {
     TrialHandler.fromSnapshot(snapshot); // ensure that .thisN vals are up to date
@@ -1835,8 +1725,9 @@ function trainingTrialRoutineBegin(snapshot) {
     arrowPos = (stimType === "modal") ? [-0.55, -0.015] : [0.475, -0.015];
     labelText = (stimType === "modal") ? "There is NO vocal fry at all." : "There is VERY STRONG vocal fry.";
     feedbackMsg = "";
-    prevReplayStateTrain = false;
-    prevReplayNumClicksTrain = replayBtn_2.numClicks;
+    prevReplayStateTrain = replayBtn_2.isClicked;
+    lastReplayTime = -1;
+    // replay_used = false;
     // setup some python lists for storing info about the mouse
     gotValidClick = false; // until a click is received
     trainSound.isFinished = false;
@@ -1873,10 +1764,6 @@ function trainingTrialRoutineBegin(snapshot) {
   }
 }
 
-
-var rating;
-var replay_click_now;
-var replay_new_click;
 function trainingTrialRoutineEachFrame() {
   return async function () {
     //--- Loop for each frame of Routine 'trainingTrial' ---
@@ -1885,14 +1772,14 @@ function trainingTrialRoutineEachFrame() {
     frameN = frameN + 1;// number of completed frames (so 0 is the first frame)
     // update/draw components on each frame
     // Run 'Each Frame' code from trainingLogic
-     if (binButton.isClicked) {
+    if (binButton.isClicked) {
         selection = "bin";
         trainSlider.reset();
     }
     rating = trainSlider.getRating();
     if (rating) {
         selection = "slider";
-    }
+    
     if ((selection === "bin")) {
         correct = (stimType === "modal");
     } else {
@@ -1918,19 +1805,32 @@ function trainingTrialRoutineEachFrame() {
     continueBtn_4.opacity = (correct ? 1.0 : 0.35);
     
     replay_click_now = replayBtn_2.isClicked;
-    replay_new_click = (replay_click_now && !prevReplayStateTrain) || (replayBtn_2.numClicks > prevReplayNumClicksTrain);
-    if (!replay_used && replay_new_click) {
+    replay_new_click = (replay_click_now && !prevReplayStateTrain);
+    prevReplayStateTrain = replay_click_now;
+    
+    if (replay_new_click && (t - lastReplayTime) > 0.2) {
+        lastReplayTime = t;
+        // stop any voice still running so playbacks can't stack
+        if (trainSound.status === PsychoJS.Status.STARTED) {
+            try { trainSound.stop(); } catch (e) {}
+        }
+        trainSound.status = PsychoJS.Status.NOT_STARTED;
         trainSound.isFinished = false;
         trainSound.tStart = t;
-        trainSound.status = PsychoJS.Status.STARTED;
         trainSound.play();
+        trainSound.status = PsychoJS.Status.STARTED;
     }
-    prevReplayStateTrain = replay_click_now;
-    prevReplayNumClicksTrain = replayBtn_2.numClicks;
     
     if ((continueBtn_4.isClicked && correct)) {
         continueRoutine = false;
     } 
+    //if (trainSound.status === STARTED) {
+      //  trainSound.isPlaying = true;
+        //if (t >= (trainSound.getDuration() + trainSound.tStart)) {
+          //  trainSound.isFinished = true;
+        //}
+    //}
+    
     if (trainSound.status === STARTED) {
         trainSound.isPlaying = true;
         if (t >= (trainSound.getDuration() + trainSound.tStart)) {
@@ -2187,7 +2087,6 @@ function trainingTrialRoutineEachFrame() {
   };
 }
 
-
 function trainingTrialRoutineEnd(snapshot) {
   return async function () {
     //--- Ending Routine 'trainingTrial' ---
@@ -2221,10 +2120,6 @@ function trainingTrialRoutineEnd(snapshot) {
   }
 }
 
-
-var mainRoutineMaxDurationReached;
-var mainRoutineMaxDuration;
-var mainRoutineComponents;
 function mainRoutineRoutineBegin(snapshot) {
   return async function () {
     TrialHandler.fromSnapshot(snapshot); // ensure that .thisN vals are up to date
@@ -2254,7 +2149,6 @@ function mainRoutineRoutineBegin(snapshot) {
     return Scheduler.Event.NEXT;
   }
 }
-
 
 function mainRoutineRoutineEachFrame() {
   return async function () {
@@ -2349,7 +2243,6 @@ function mainRoutineRoutineEachFrame() {
   };
 }
 
-
 function mainRoutineRoutineEnd(snapshot) {
   return async function () {
     //--- Ending Routine 'mainRoutine' ---
@@ -2373,17 +2266,6 @@ function mainRoutineRoutineEnd(snapshot) {
   }
 }
 
-
-var mainTrialMaxDurationReached;
-var counterText;
-var bin_selected;
-var response_given;
-var rt_clock;
-var replay_used;
-var prevReplayStateMain;
-var prevReplayNumClicksMain;
-var mainTrialMaxDuration;
-var mainTrialComponents;
 function mainTrialRoutineBegin(snapshot) {
   return async function () {
     TrialHandler.fromSnapshot(snapshot); // ensure that .thisN vals are up to date
@@ -2409,6 +2291,7 @@ function mainTrialRoutineBegin(snapshot) {
     prevReplayStateMain = replayBtn_3.isClicked;
     prevReplayNumClicksMain = replayBtn_3.numClicks;
     console.log('Trial file:', stimFile);
+    
     // setup some python lists for storing info about the mouse_2
     gotValidClick = false; // until a click is received
     mainSound.isFinished = false;
@@ -2442,8 +2325,6 @@ function mainTrialRoutineBegin(snapshot) {
   }
 }
 
-
-var slider_rating;
 function mainTrialRoutineEachFrame() {
   return async function () {
     //--- Loop for each frame of Routine 'mainTrial' ---
@@ -2716,7 +2597,6 @@ function mainTrialRoutineEachFrame() {
   };
 }
 
-
 function mainTrialRoutineEnd(snapshot) {
   return async function () {
     //--- Ending Routine 'mainTrial' ---
@@ -2750,11 +2630,6 @@ function mainTrialRoutineEnd(snapshot) {
   }
 }
 
-
-var breakScreenMaxDurationReached;
-var show_break;
-var breakScreenMaxDuration;
-var breakScreenComponents;
 function breakScreenRoutineBegin(snapshot) {
   return async function () {
     TrialHandler.fromSnapshot(snapshot); // ensure that .thisN vals are up to date
@@ -2790,7 +2665,6 @@ function breakScreenRoutineBegin(snapshot) {
     return Scheduler.Event.NEXT;
   }
 }
-
 
 function breakScreenRoutineEachFrame() {
   return async function () {
@@ -2885,7 +2759,6 @@ function breakScreenRoutineEachFrame() {
   };
 }
 
-
 function breakScreenRoutineEnd(snapshot) {
   return async function () {
     //--- Ending Routine 'breakScreen' ---
@@ -2909,10 +2782,6 @@ function breakScreenRoutineEnd(snapshot) {
   }
 }
 
-
-var mainFinishedMaxDurationReached;
-var mainFinishedMaxDuration;
-var mainFinishedComponents;
 function mainFinishedRoutineBegin(snapshot) {
   return async function () {
     TrialHandler.fromSnapshot(snapshot); // ensure that .thisN vals are up to date
@@ -2942,7 +2811,6 @@ function mainFinishedRoutineBegin(snapshot) {
     return Scheduler.Event.NEXT;
   }
 }
-
 
 function mainFinishedRoutineEachFrame() {
   return async function () {
@@ -3037,7 +2905,6 @@ function mainFinishedRoutineEachFrame() {
   };
 }
 
-
 function mainFinishedRoutineEnd(snapshot) {
   return async function () {
     //--- Ending Routine 'mainFinished' ---
@@ -3061,15 +2928,6 @@ function mainFinishedRoutineEnd(snapshot) {
   }
 }
 
-
-var surveyQuestionMaxDurationReached;
-var is_text_type;
-var selected_choice;
-var prevYesState;
-var prevNoState;
-var prevContinueState;
-var surveyQuestionMaxDuration;
-var surveyQuestionComponents;
 function surveyQuestionRoutineBegin(snapshot) {
   return async function () {
     TrialHandler.fromSnapshot(snapshot); // ensure that .thisN vals are up to date
@@ -3118,13 +2976,6 @@ function surveyQuestionRoutineBegin(snapshot) {
   }
 }
 
-
-var yes_click_now;
-var no_click_now;
-var current_answer;
-var answered;
-var is_required;
-var continue_click_now;
 function surveyQuestionRoutineEachFrame() {
   return async function () {
     //--- Loop for each frame of Routine 'surveyQuestion' ---
@@ -3348,7 +3199,6 @@ function surveyQuestionRoutineEachFrame() {
   };
 }
 
-
 function surveyQuestionRoutineEnd(snapshot) {
   return async function () {
     //--- Ending Routine 'surveyQuestion' ---
@@ -3379,10 +3229,6 @@ function surveyQuestionRoutineEnd(snapshot) {
   }
 }
 
-
-var thankYouScreenMaxDurationReached;
-var thankYouScreenMaxDuration;
-var thankYouScreenComponents;
 function thankYouScreenRoutineBegin(snapshot) {
   return async function () {
     TrialHandler.fromSnapshot(snapshot); // ensure that .thisN vals are up to date
@@ -3442,7 +3288,6 @@ function thankYouScreenRoutineBegin(snapshot) {
     return Scheduler.Event.NEXT;
   }
 }
-
 
 function thankYouScreenRoutineEachFrame() {
   return async function () {
@@ -3537,7 +3382,6 @@ function thankYouScreenRoutineEachFrame() {
   };
 }
 
-
 function thankYouScreenRoutineEnd(snapshot) {
   return async function () {
     //--- Ending Routine 'thankYouScreen' ---
@@ -3561,14 +3405,12 @@ function thankYouScreenRoutineEnd(snapshot) {
   }
 }
 
-
 function importConditions(currentLoop) {
   return async function () {
     psychoJS.importAttributes(currentLoop.getCurrentTrial());
     return Scheduler.Event.NEXT;
     };
 }
-
 
 async function quitPsychoJS(message, isCompleted) {
   // Check for and save orphaned data
