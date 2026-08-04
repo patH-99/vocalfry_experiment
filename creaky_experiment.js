@@ -1,4 +1,4 @@
-﻿/************************** 
+/************************** 
  * Creaky_Experiment *
  **************************/
 
@@ -115,6 +115,9 @@ psychoJS.start({
     {'name': 'training_stimuli/vak_creaky.wav', 'path': 'training_stimuli/vak_creaky.wav'},
     {'name': 'training_stimuli/vak_modal.wav', 'path': 'training_stimuli/vak_modal.wav'},
     {'name': 'conditions/stimuli.xlsx', 'path': 'conditions/stimuli.xlsx'},
+    {'name': 'stimuli/hab_f_c-1_p0_h-2_r3.wav', 'path': 'stimuli/hab_f_c-1_p0_h-2_r3.wav'},
+    {'name': 'stimuli/hab_f_c-1_p3_h-3_r3.wav', 'path': 'stimuli/hab_f_c-1_p3_h-3_r3.wav'},
+    {'name': 'stimuli/hab_f_c0_p-2_h-2_r1.wav', 'path': 'stimuli/hab_f_c0_p-2_h-2_r1.wav'},
     {'name': 'stimuli/hab_f_c0_p3_h3_r3.wav', 'path': 'stimuli/hab_f_c0_p3_h3_r3.wav'},
     {'name': 'stimuli/hab_f_c1_p-3_h0_r1.wav', 'path': 'stimuli/hab_f_c1_p-3_h0_r1.wav'},
     {'name': 'stimuli/hab_f_c1_p-3_h1_r2.wav', 'path': 'stimuli/hab_f_c1_p-3_h1_r2.wav'},
@@ -128,8 +131,10 @@ psychoJS.start({
     {'name': 'stimuli/hab_m_c-1_p0_h-1_r2.wav', 'path': 'stimuli/hab_m_c-1_p0_h-1_r2.wav'},
     {'name': 'stimuli/hab_m_c-1_p0_h-3_r2.wav', 'path': 'stimuli/hab_m_c-1_p0_h-3_r2.wav'},
     {'name': 'stimuli/hab_m_c-1_p2_h-2_r2.wav', 'path': 'stimuli/hab_m_c-1_p2_h-2_r2.wav'},
+    {'name': 'stimuli/hab_m_c0_p1_h3_r2.wav', 'path': 'stimuli/hab_m_c0_p1_h3_r2.wav'},
     {'name': 'stimuli/hab_m_c0_p2_h1_r2.wav', 'path': 'stimuli/hab_m_c0_p2_h1_r2.wav'},
     {'name': 'stimuli/hab_m_c1_p-1_h-1_r2.wav', 'path': 'stimuli/hab_m_c1_p-1_h-1_r2.wav'},
+    {'name': 'stimuli/hab_m_c1_p1_h1_r2.wav', 'path': 'stimuli/hab_m_c1_p1_h1_r2.wav'},
     {'name': 'stimuli/hab_m_c2_p3_h-2_r3.wav', 'path': 'stimuli/hab_m_c2_p3_h-2_r3.wav'},
     {'name': 'stimuli/hab_m_c2_p3_h-3_r3.wav', 'path': 'stimuli/hab_m_c2_p3_h-3_r3.wav'},
     {'name': 'stimuli/had_f_c-1_p-2_h-3_r1.wav', 'path': 'stimuli/had_f_c-1_p-2_h-3_r1.wav'},
