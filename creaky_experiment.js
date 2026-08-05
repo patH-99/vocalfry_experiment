@@ -385,7 +385,7 @@ async function experimentInit() {
   introHint = new visual.TextStim({
     win: psychoJS.window,
     name: 'introHint',
-    text: 'Press SPACE to play the recording. You may replay it as many times as you like.',
+    text: 'Press SPACE to replay the recording. You may replay it as many times as you like.',
     font: 'Arial',
     units: undefined, 
     pos: [0, 0], draggable: false, height: 0.02,  wrapWidth: undefined, ori: 0.0,
@@ -548,7 +548,7 @@ async function experimentInit() {
   trialText = new visual.TextStim({
     win: psychoJS.window,
     name: 'trialText',
-    text: 'Press SPACE to play the syllable. You can replay it as many times as you like.',
+    text: 'Press SPACE to replay the syllable. You can replay it as many times as you like.',
     font: 'Arial',
     units: undefined, 
     pos: [0, 0.25], draggable: false, height: 0.02,  wrapWidth: undefined, ori: 0.0,
@@ -701,7 +701,7 @@ async function experimentInit() {
   spaceHint = new visual.TextStim({
     win: psychoJS.window,
     name: 'spaceHint',
-    text: 'Press SPACE to play the syllable. You can only replay it once.',
+    text: 'Press SPACE to replay the syllable. You can only replay it once.',
     font: 'Arial',
     units: undefined, 
     pos: [0, 0.15], draggable: false, height: 0.02,  wrapWidth: undefined, ori: 0.0,
