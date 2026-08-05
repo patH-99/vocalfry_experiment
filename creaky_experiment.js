@@ -1355,6 +1355,7 @@ function surveyLoopLoopEndIteration(scheduler, snapshot) {
 
 var introTrialMaxDurationReached;
 var nPlays;
+var autoPlayed;
 var _key_space_3_allKeys;
 var introTrialMaxDuration;
 var introTrialComponents;
@@ -1375,6 +1376,7 @@ function introTrialRoutineBegin(snapshot) {
     // Run 'Begin Routine' code from introLogic
     nPlays = 0;
     continueBtn_2.opacity = 0.35;
+    autoPlayed = false;
     introSound.isFinished = false;
     introSound.setValue(introFile);
     introSound.setVolume(1.0);
@@ -1410,6 +1412,12 @@ function introTrialRoutineEachFrame() {
     frameN = frameN + 1;// number of completed frames (so 0 is the first frame)
     // update/draw components on each frame
     // Run 'Each Frame' code from introLogic
+    if (!autoPlayed && t >= 0.3) {
+        introSound.play();
+        autoPlayed = true;
+        nPlays += 1;
+    }
+    
     // play the sound once per space press
     if (key_space_3.getKeys({keyList: ['space'], waitRelease: false}).length > 0) {
         introSound.play();
@@ -1781,6 +1789,7 @@ function trainingTrialRoutineBegin(snapshot) {
     correct = false;
     selection = "";
     nPlays = 0;
+    autoPlayed = false;
     feedbackMsg = "";
     arrowPos = (stimType === "modal") ? [-0.55, -0.015] : [0.475, -0.015];
     labelText = (stimType === "modal") ? "There is NO vocal fry at all." : "There is VERY STRONG vocal fry.";
@@ -1831,6 +1840,12 @@ function trainingTrialRoutineEachFrame() {
     frameN = frameN + 1;// number of completed frames (so 0 is the first frame)
     // update/draw components on each frame
     // Run 'Each Frame' code from trainingLogic
+    if (!autoPlayed && t >= 0.3) {
+        trainSound.play();
+        autoPlayed = true;
+        nPlays += 1;
+    }
+    
     // play the sound once per space press
     if (key_space.getKeys({keyList: ['space'], waitRelease: false}).length > 0) {
         trainSound.play();
@@ -2328,6 +2343,7 @@ function mainTrialRoutineBegin(snapshot) {
     nPlays = 0;
     maxPlays = 2;
     replay_used = false;
+    autoPlayed = false;
     
     console.log('Trial file:', stimFile);
     mainSound.isFinished = false;
@@ -2375,6 +2391,12 @@ function mainTrialRoutineEachFrame() {
     frameN = frameN + 1;// number of completed frames (so 0 is the first frame)
     // update/draw components on each frame
     // Run 'Each Frame' code from mainLogic
+    if (!autoPlayed && t >= 0.3) {
+        mainSound.play();
+        autoPlayed = true;
+        nPlays += 1;
+    }
+    
     // replay via SPACE, limited to one
     if (nPlays < maxPlays && key_space_2.getKeys({keyList: ['space'], waitRelease: false}).length > 0) {
         mainSound.play();
