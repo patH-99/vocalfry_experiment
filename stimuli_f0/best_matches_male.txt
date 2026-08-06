@@ -1,0 +1,139 @@
+===== Syllable: hab =====
+
+Run 1 (1, 1, 1) -> {'H1H2c': -2, 'CPP': 23, 'HNR05': 15}
+  Row: 49, file: hab_m_c-1_p-3_h-3_r2.wav, syllable: hab, H1H2c: -2.1874078926914726, CPP: 22.829333333333334, HNR05: 13.225702285323377, Match Score: 0.0641
+
+Run 2 (1, 2, 2) -> {'H1H2c': -2, 'CPP': 20, 'HNR05': 11}
+  Row: 705, file: hab_m_c2_p2_h1_r1.wav, syllable: hab, H1H2c: -1.9200985092597858, CPP: 21.23975, HNR05: 9.575374252123332, Match Score: 0.1323
+
+Run 3 (1, 3, 3) -> {'H1H2c': -2, 'CPP': 17, 'HNR05': 7}
+  Row: 334, file: hab_m_c0_p-2_h3_r2.wav, syllable: hab, H1H2c: -1.1717073636742725, CPP: 21.635666666666665, HNR05: 3.787528884474174, Match Score: 0.4326
+
+Run 4 (2, 1, 2) -> {'H1H2c': 0, 'CPP': 23, 'HNR05': 11}
+  Row: 697, file: hab_m_c2_p2_h-2_r2.wav, syllable: hab, H1H2c: 0.6994758650709988, CPP: 22.89833333333333, HNR05: 10.407133462099432, Match Score: 0.0904
+
+Run 5 (2, 2, 3) -> {'H1H2c': 0, 'CPP': 20, 'HNR05': 7}
+  Row: 636, file: hab_m_c2_p-3_h-3_r1.wav, syllable: hab, H1H2c: 0.1346337793428063, CPP: 20.749, HNR05: 9.750997083493408, Match Score: 0.1279
+
+Run 6 (2, 3, 1) -> {'H1H2c': 0, 'CPP': 17, 'HNR05': 15}
+  Row: 364, file: hab_m_c0_p0_h-3_r2.wav, syllable: hab, H1H2c: -0.16488605775077048, CPP: 17.3445, HNR05: 15.185065188596852, Match Score: 0.0416
+
+Run 7 (3, 1, 3) -> {'H1H2c': 2, 'CPP': 23, 'HNR05': 7}
+  Row: 630, file: hab_m_c2_p-3_h-1_r1.wav, syllable: hab, H1H2c: 2.8247959082002154, CPP: 23.1655, HNR05: 7.447287617489066, Match Score: 0.0941
+
+Run 8 (3, 2, 1) -> {'H1H2c': 2, 'CPP': 20, 'HNR05': 15}
+  Row: 491, file: hab_m_c1_p-3_h-3_r3.wav, syllable: hab, H1H2c: 1.8018496202654646, CPP: 19.2435, HNR05: 13.873196993688314, Match Score: 0.0962
+
+Run 9 (3, 3, 2) -> {'H1H2c': 2, 'CPP': 17, 'HNR05': 11}
+  Row: 102, file: hab_m_c-1_p1_h3_r1.wav, syllable: hab, H1H2c: 2.4729420674709366, CPP: 19.707666666666665, HNR05: 12.073134489125698, Match Score: 0.2335
+
+
+===== Syllable: had =====
+
+Run 1 (1, 1, 1) -> {'H1H2c': -2, 'CPP': 23, 'HNR05': 15}
+  Row: 1309, file: had_m_c1_p3_h-3_r2.wav, syllable: had, H1H2c: -1.968796744648678, CPP: 23.3475, HNR05: 10.23989848968376, Match Score: 0.0961
+
+Run 2 (1, 2, 2) -> {'H1H2c': -2, 'CPP': 20, 'HNR05': 11}
+  Row: 881, file: had_m_c-1_p3_h3_r3.wav, syllable: had, H1H2c: -0.07208609429561363, CPP: 20.506333333333334, HNR05: 11.869900629957206, Match Score: 0.1559
+
+Run 3 (1, 3, 3) -> {'H1H2c': -2, 'CPP': 17, 'HNR05': 7}
+  Row: 1351, file: had_m_c2_p-2_h-3_r2.wav, syllable: had, H1H2c: -0.9949625375522827, CPP: 17.201666666666668, HNR05: 6.52784649885637, Match Score: 0.0727
+
+Run 4 (2, 1, 2) -> {'H1H2c': 0, 'CPP': 23, 'HNR05': 11}
+  Row: 1442, file: had_m_c2_p2_h1_r3.wav, syllable: had, H1H2c: 0.5693499051254847, CPP: 23.110999999999997, HNR05: 10.768760274390424, Match Score: 0.0455
+
+Run 5 (2, 2, 3) -> {'H1H2c': 0, 'CPP': 20, 'HNR05': 7}
+  Row: 1133, file: had_m_c0_p1_h3_r3.wav, syllable: had, H1H2c: 0.5803186978588712, CPP: 20.452333333333332, HNR05: 7.698231398834149, Match Score: 0.0837
+
+Run 6 (2, 3, 1) -> {'H1H2c': 0, 'CPP': 17, 'HNR05': 15}
+  Row: 1017, file: had_m_c-2_p3_h0_r1.wav, syllable: had, H1H2c: 0.5886646083944479, CPP: 17.295333333333332, HNR05: 10.009011638498626, Match Score: 0.1215
+
+Run 7 (3, 1, 3) -> {'H1H2c': 2, 'CPP': 23, 'HNR05': 7}
+  Row: 1447, file: had_m_c2_p2_h3_r2.wav, syllable: had, H1H2c: 1.553419701329356, CPP: 22.55933333333333, HNR05: 6.970746480674619, Match Score: 0.0676
+
+Run 8 (3, 2, 1) -> {'H1H2c': 2, 'CPP': 20, 'HNR05': 15}
+  Row: 991, file: had_m_c-2_p2_h-2_r2.wav, syllable: had, H1H2c: 2.0122399554908696, CPP: 20.0735, HNR05: 15.664243534224852, Match Score: 0.0162
+
+Run 9 (3, 3, 2) -> {'H1H2c': 2, 'CPP': 17, 'HNR05': 11}
+  Row: 1184, file: had_m_c1_p-1_h-3_r3.wav, syllable: had, H1H2c: 1.9662709799052702, CPP: 16.626666666666665, HNR05: 11.283272588658477, Match Score: 0.0323
+
+
+===== Syllable: tab =====
+
+Run 1 (1, 1, 1) -> {'H1H2c': -2, 'CPP': 23, 'HNR05': 15}
+  Row: 1828, file: tab_m_c0_p0_h-1_r2.wav, syllable: tab, H1H2c: -2.051968233813542, CPP: 22.949, HNR05: 9.74866030598186, Match Score: 0.0529
+
+Run 2 (1, 2, 2) -> {'H1H2c': -2, 'CPP': 20, 'HNR05': 11}
+  Row: 1829, file: tab_m_c0_p0_h-1_r3.wav, syllable: tab, H1H2c: -2.447448885864541, CPP: 20.042, HNR05: 8.692346713404142, Match Score: 0.0481
+
+Run 3 (1, 3, 3) -> {'H1H2c': -2, 'CPP': 17, 'HNR05': 7}
+  Row: 1771, file: tab_m_c0_p-1_h-3_r2.wav, syllable: tab, H1H2c: -2.9765713029401226, CPP: 18.66033333333333, HNR05: 8.548121640496134, Match Score: 0.1855
+
+Run 4 (2, 1, 2) -> {'H1H2c': 0, 'CPP': 23, 'HNR05': 11}
+  Row: 2145, file: tab_m_c2_p1_h-2_r1.wav, syllable: tab, H1H2c: 0.053818870334486256, CPP: 22.89833333333333, HNR05: 8.75052951316752, Match Score: 0.0320
+
+Run 5 (2, 2, 3) -> {'H1H2c': 0, 'CPP': 20, 'HNR05': 7}
+  Row: 1936, file: tab_m_c1_p-2_h-2_r2.wav, syllable: tab, H1H2c: 0.39297955956994457, CPP: 19.586333333333332, HNR05: 7.137369912245693, Match Score: 0.0623
+
+Run 6 (2, 3, 1) -> {'H1H2c': 0, 'CPP': 17, 'HNR05': 15}
+  Row: 1769, file: tab_m_c0_p-1_h-2_r3.wav, syllable: tab, H1H2c: 2.262076073273001, CPP: 16.563333333333333, HNR05: 8.859402127457772, Match Score: 0.2171
+
+Run 7 (3, 1, 3) -> {'H1H2c': 2, 'CPP': 23, 'HNR05': 7}
+  Row: 2065, file: tab_m_c2_p-1_h-3_r2.wav, syllable: tab, H1H2c: 1.7795935059170418, CPP: 22.997666666666664, HNR05: 7.462591558548123, Match Score: 0.0191
+
+Run 8 (3, 2, 1) -> {'H1H2c': 2, 'CPP': 20, 'HNR05': 15}
+  Row: 1530, file: tab_m_c-1_p-3_h3_r1.wav, syllable: tab, H1H2c: 1.7817527358766707, CPP: 19.94925, HNR05: 14.060403826409768, Match Score: 0.0273
+
+Run 9 (3, 3, 2) -> {'H1H2c': 2, 'CPP': 17, 'HNR05': 11}
+  Row: 1553, file: tab_m_c-1_p0_h3_r3.wav, syllable: tab, H1H2c: 1.732599107737381, CPP: 17.076666666666664, HNR05: 10.584801177746787, Match Score: 0.0269
+
+
+===== Syllable: tad =====
+
+Run 1 (1, 1, 1) -> {'H1H2c': -2, 'CPP': 23, 'HNR05': 15}
+  Row: 2755, file: tad_m_c1_p2_h-2_r3.wav, syllable: tad, H1H2c: -2.110810589630468, CPP: 23.0675, HNR05: 8.846817645373877, Match Score: 0.0660
+
+Run 2 (1, 2, 2) -> {'H1H2c': -2, 'CPP': 20, 'HNR05': 11}
+  Row: 2627, file: tad_m_c0_p3_h-1_r3.wav, syllable: tad, H1H2c: -2.2978160740095017, CPP: 19.848, HNR05: 11.95107339291879, Match Score: 0.0288
+
+Run 3 (1, 3, 3) -> {'H1H2c': -2, 'CPP': 17, 'HNR05': 7}
+  Row: 2725, file: tad_m_c1_p0_h2_r3.wav, syllable: tad, H1H2c: -2.2107621957598838, CPP: 17.139666666666667, HNR05: 7.011013620745463, Match Score: 0.0145
+
+Run 4 (2, 1, 2) -> {'H1H2c': 0, 'CPP': 23, 'HNR05': 11}
+  Row: 2345, file: tad_m_c-1_p3_h1_r3.wav, syllable: tad, H1H2c: 1.3828181466719371, CPP: 23.1525, HNR05: 11.261040522869635, Match Score: 0.0619
+
+Run 5 (2, 2, 3) -> {'H1H2c': 0, 'CPP': 20, 'HNR05': 7}
+  Row: 2681, file: tad_m_c1_p-2_h1_r3.wav, syllable: tad, H1H2c: -0.1646041611444462, CPP: 20.268, HNR05: 7.672484736495649, Match Score: 0.0293
+
+Run 6 (2, 3, 1) -> {'H1H2c': 0, 'CPP': 17, 'HNR05': 15}
+  Row: 2499, file: tad_m_c0_p-1_h-1_r1.wav, syllable: tad, H1H2c: 0.09241209975264535, CPP: 16.540333333333333, HNR05: 11.516174033903495, Match Score: 0.0602
+
+Run 7 (3, 1, 3) -> {'H1H2c': 2, 'CPP': 23, 'HNR05': 7}
+  Row: 2575, file: tad_m_c0_p0_h1_r2.wav, syllable: tad, H1H2c: 2.287983327397397, CPP: 22.996, HNR05: 8.787018197726553, Match Score: 0.0299
+
+Run 8 (3, 2, 1) -> {'H1H2c': 2, 'CPP': 20, 'HNR05': 15}
+  Row: 2254, file: tad_m_c-1_p-3_h-3_r2.wav, syllable: tad, H1H2c: 1.6627263082394421, CPP: 20.552, HNR05: 14.585168394599341, Match Score: 0.0511
+
+Run 9 (3, 3, 2) -> {'H1H2c': 2, 'CPP': 17, 'HNR05': 11}
+  Row: 2534, file: tad_m_c0_p-2_h1_r3.wav, syllable: tad, H1H2c: 2.9082356095287416, CPP: 16.9695, HNR05: 9.87911846006233, Match Score: 0.0483
+
+
+===== Extra syllables as a modal and creaky baseline - first 4 are most modal, last 4 are most creaky (theoretically) =====
+
+
+
+File		      H1H2c     CPP       HNR05
+
+Most modal: 
+hab_m_c1_p2_h-2_r1.wav   4.558087  30.204000  20.818085
+had_m_c2_p-3_h2_r2.wav   9.955932  24.560333  10.139481
+tab_m_c2_p0_h3_r1.wav   9.071337  27.385000   7.819180
+tad_m_c2_p2_h-2_r1.wav  10.277524  28.695000   9.214216
+
+Most creaky:
+
+hab_m_c2_p0_h2_r3.wav	-5.995436  23.308000   0.557041had_m_c1_p1_h2_r3.wav  -5.673747  25.129500   6.250755tab_m_c2_p2_h-3_r2.wav  -7.930263  19.308000   2.551379tad_m_c2_p-1_h2_r3.wav  -5.792546   7.503000   0.220373
+
+
+
+
