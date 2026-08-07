@@ -95,101 +95,108 @@ psychoJS.start({
     {'name': 'introductory_stimuli/creak_m_2.wav', 'path': 'introductory_stimuli/creak_m_2.wav'},
     {'name': 'introductory_stimuli/creak_f_3.wav', 'path': 'introductory_stimuli/creak_f_3.wav'},
     {'name': 'introductory_stimuli/creak_m_3.wav', 'path': 'introductory_stimuli/creak_m_3.wav'},
-    {'name': 'conditions/training.xlsx', 'path': 'conditions/training.xlsx'},
-    {'name': 'training_stimuli/chat_modal.wav', 'path': 'training_stimuli/chat_modal.wav'},
-    {'name': 'training_stimuli/chat_creaky.wav', 'path': 'training_stimuli/chat_creaky.wav'},
-    {'name': 'training_stimuli/zat_modal.wav', 'path': 'training_stimuli/zat_modal.wav'},
-    {'name': 'training_stimuli/zat_creaky.wav', 'path': 'training_stimuli/zat_creaky.wav'},
-    {'name': 'training_stimuli/vop_modal.wav', 'path': 'training_stimuli/vop_modal.wav'},
-    {'name': 'training_stimuli/vop_creaky.wav', 'path': 'training_stimuli/vop_creaky.wav'},
-    {'name': 'training_stimuli/jat_creaky.wav', 'path': 'training_stimuli/jat_creaky.wav'},
-    {'name': 'training_stimuli/jat_modal.wav', 'path': 'training_stimuli/jat_modal.wav'},
-    {'name': 'training_stimuli/vak_creaky.wav', 'path': 'training_stimuli/vak_creaky.wav'},
-    {'name': 'training_stimuli/vak_modal.wav', 'path': 'training_stimuli/vak_modal.wav'},
-    {'name': 'conditions/stimuli.xlsx', 'path': 'conditions/stimuli.xlsx'},
-    {'name': 'stimuli/hab_f_c0_p3_h3_r3.wav', 'path': 'stimuli/hab_f_c0_p3_h3_r3.wav'},
-    {'name': 'stimuli/hab_f_c1_p-3_h0_r1.wav', 'path': 'stimuli/hab_f_c1_p-3_h0_r1.wav'},
-    {'name': 'stimuli/hab_f_c1_p-3_h1_r2.wav', 'path': 'stimuli/hab_f_c1_p-3_h1_r2.wav'},
-    {'name': 'stimuli/hab_f_c1_p1_h2_r2.wav', 'path': 'stimuli/hab_f_c1_p1_h2_r2.wav'},
-    {'name': 'stimuli/hab_f_c2_p-1_h2_r3.wav', 'path': 'stimuli/hab_f_c2_p-1_h2_r3.wav'},
-    {'name': 'stimuli/hab_f_c2_p2_h0_r1.wav', 'path': 'stimuli/hab_f_c2_p2_h0_r1.wav'},
-    {'name': 'stimuli/hab_f_c2_p3_h-2_r3.wav', 'path': 'stimuli/hab_f_c2_p3_h-2_r3.wav'},
-    {'name': 'stimuli/hab_f_c2_p3_h1_r2.wav', 'path': 'stimuli/hab_f_c2_p3_h1_r2.wav'},
-    {'name': 'stimuli/hab_m_c-1_p-3_h-3_r2.wav', 'path': 'stimuli/hab_m_c-1_p-3_h-3_r2.wav'},
-    {'name': 'stimuli/hab_m_c-1_p-3_h-3_r3.wav', 'path': 'stimuli/hab_m_c-1_p-3_h-3_r3.wav'},
-    {'name': 'stimuli/hab_m_c-1_p0_h-1_r2.wav', 'path': 'stimuli/hab_m_c-1_p0_h-1_r2.wav'},
-    {'name': 'stimuli/hab_m_c-1_p0_h-3_r2.wav', 'path': 'stimuli/hab_m_c-1_p0_h-3_r2.wav'},
-    {'name': 'stimuli/hab_m_c-1_p2_h-2_r2.wav', 'path': 'stimuli/hab_m_c-1_p2_h-2_r2.wav'},
-    {'name': 'stimuli/hab_m_c0_p2_h1_r2.wav', 'path': 'stimuli/hab_m_c0_p2_h1_r2.wav'},
-    {'name': 'stimuli/hab_m_c1_p-1_h-1_r2.wav', 'path': 'stimuli/hab_m_c1_p-1_h-1_r2.wav'},
-    {'name': 'stimuli/hab_m_c2_p3_h-2_r3.wav', 'path': 'stimuli/hab_m_c2_p3_h-2_r3.wav'},
-    {'name': 'stimuli/hab_m_c2_p3_h-3_r3.wav', 'path': 'stimuli/hab_m_c2_p3_h-3_r3.wav'},
-    {'name': 'stimuli/had_f_c-1_p-2_h-3_r1.wav', 'path': 'stimuli/had_f_c-1_p-2_h-3_r1.wav'},
-    {'name': 'stimuli/had_f_c-1_p0_h-3_r2.wav', 'path': 'stimuli/had_f_c-1_p0_h-3_r2.wav'},
-    {'name': 'stimuli/had_f_c0_p-2_h-1_r1.wav', 'path': 'stimuli/had_f_c0_p-2_h-1_r1.wav'},
-    {'name': 'stimuli/had_f_c0_p-2_h0_r1.wav', 'path': 'stimuli/had_f_c0_p-2_h0_r1.wav'},
-    {'name': 'stimuli/had_f_c0_p3_h-1_r2.wav', 'path': 'stimuli/had_f_c0_p3_h-1_r2.wav'},
-    {'name': 'stimuli/had_f_c1_p-2_h3_r2.wav', 'path': 'stimuli/had_f_c1_p-2_h3_r2.wav'},
-    {'name': 'stimuli/had_f_c1_p-3_h3_r1.wav', 'path': 'stimuli/had_f_c1_p-3_h3_r1.wav'},
-    {'name': 'stimuli/had_f_c1_p2_h-3_r3.wav', 'path': 'stimuli/had_f_c1_p2_h-3_r3.wav'},
-    {'name': 'stimuli/had_f_c1_p2_h1_r2.wav', 'path': 'stimuli/had_f_c1_p2_h1_r2.wav'},
-    {'name': 'stimuli/had_f_c2_p-3_h0_r3.wav', 'path': 'stimuli/had_f_c2_p-3_h0_r3.wav'},
-    {'name': 'stimuli/had_f_c2_p3_h1_r2.wav', 'path': 'stimuli/had_f_c2_p3_h1_r2.wav'},
-    {'name': 'stimuli/had_m_c-1_p1_h-1_r1.wav', 'path': 'stimuli/had_m_c-1_p1_h-1_r1.wav'},
-    {'name': 'stimuli/had_m_c-1_p3_h3_r1.wav', 'path': 'stimuli/had_m_c-1_p3_h3_r1.wav'},
-    {'name': 'stimuli/had_m_c-2_p-1_h2_r1.wav', 'path': 'stimuli/had_m_c-2_p-1_h2_r1.wav'},
-    {'name': 'stimuli/had_m_c-2_p-2_h2_r1.wav', 'path': 'stimuli/had_m_c-2_p-2_h2_r1.wav'},
-    {'name': 'stimuli/had_m_c-2_p-3_h-2_r3.wav', 'path': 'stimuli/had_m_c-2_p-3_h-2_r3.wav'},
-    {'name': 'stimuli/had_m_c-2_p3_h-1_r3.wav', 'path': 'stimuli/had_m_c-2_p3_h-1_r3.wav'},
-    {'name': 'stimuli/had_m_c0_p3_h3_r2.wav', 'path': 'stimuli/had_m_c0_p3_h3_r2.wav'},
-    {'name': 'stimuli/had_m_c1_p-1_h0_r1.wav', 'path': 'stimuli/had_m_c1_p-1_h0_r1.wav'},
-    {'name': 'stimuli/had_m_c1_p0_h3_r1.wav', 'path': 'stimuli/had_m_c1_p0_h3_r1.wav'},
-    {'name': 'stimuli/had_m_c1_p1_h3_r2.wav', 'path': 'stimuli/had_m_c1_p1_h3_r2.wav'},
-    {'name': 'stimuli/had_m_c2_p-3_h3_r2.wav', 'path': 'stimuli/had_m_c2_p-3_h3_r2.wav'},
-    {'name': 'stimuli/tab_f_c-1_p-3_h-3_r1.wav', 'path': 'stimuli/tab_f_c-1_p-3_h-3_r1.wav'},
-    {'name': 'stimuli/tab_f_c0_p-2_h-1_r2.wav', 'path': 'stimuli/tab_f_c0_p-2_h-1_r2.wav'},
-    {'name': 'stimuli/tab_f_c0_p-2_h0_r1.wav', 'path': 'stimuli/tab_f_c0_p-2_h0_r1.wav'},
-    {'name': 'stimuli/tab_f_c0_p-2_h1_r3.wav', 'path': 'stimuli/tab_f_c0_p-2_h1_r3.wav'},
-    {'name': 'stimuli/tab_f_c0_p-3_h-1_r3.wav', 'path': 'stimuli/tab_f_c0_p-3_h-1_r3.wav'},
-    {'name': 'stimuli/tab_f_c0_p0_h-3_r2.wav', 'path': 'stimuli/tab_f_c0_p0_h-3_r2.wav'},
-    {'name': 'stimuli/tab_f_c1_p2_h1_r1.wav', 'path': 'stimuli/tab_f_c1_p2_h1_r1.wav'},
-    {'name': 'stimuli/tab_f_c1_p3_h-2_r2.wav', 'path': 'stimuli/tab_f_c1_p3_h-2_r2.wav'},
-    {'name': 'stimuli/tab_f_c2_p-1_h1_r1.wav', 'path': 'stimuli/tab_f_c2_p-1_h1_r1.wav'},
-    {'name': 'stimuli/tab_f_c2_p3_h0_r1.wav', 'path': 'stimuli/tab_f_c2_p3_h0_r1.wav'},
-    {'name': 'stimuli/tab_f_c2_p3_h2_r2.wav', 'path': 'stimuli/tab_f_c2_p3_h2_r2.wav'},
-    {'name': 'stimuli/tab_m_c-1_p0_h-3_r2.wav', 'path': 'stimuli/tab_m_c-1_p0_h-3_r2.wav'},
-    {'name': 'stimuli/tab_m_c-1_p2_h-1_r2.wav', 'path': 'stimuli/tab_m_c-1_p2_h-1_r2.wav'},
-    {'name': 'stimuli/tab_m_c-2_p-1_h2_r2.wav', 'path': 'stimuli/tab_m_c-2_p-1_h2_r2.wav'},
-    {'name': 'stimuli/tab_m_c-2_p1_h0_r1.wav', 'path': 'stimuli/tab_m_c-2_p1_h0_r1.wav'},
-    {'name': 'stimuli/tab_m_c0_p-2_h-1_r3.wav', 'path': 'stimuli/tab_m_c0_p-2_h-1_r3.wav'},
-    {'name': 'stimuli/tab_m_c0_p1_h-3_r2.wav', 'path': 'stimuli/tab_m_c0_p1_h-3_r2.wav'},
-    {'name': 'stimuli/tab_m_c0_p3_h3_r2.wav', 'path': 'stimuli/tab_m_c0_p3_h3_r2.wav'},
-    {'name': 'stimuli/tab_m_c1_p-2_h-3_r3.wav', 'path': 'stimuli/tab_m_c1_p-2_h-3_r3.wav'},
-    {'name': 'stimuli/tab_m_c1_p0_h-2_r3.wav', 'path': 'stimuli/tab_m_c1_p0_h-2_r3.wav'},
-    {'name': 'stimuli/tab_m_c1_p0_h3_r1.wav', 'path': 'stimuli/tab_m_c1_p0_h3_r1.wav'},
-    {'name': 'stimuli/tab_m_c2_p2_h0_r3.wav', 'path': 'stimuli/tab_m_c2_p2_h0_r3.wav'},
-    {'name': 'stimuli/tad_f_c-1_p-3_h-1_r1.wav', 'path': 'stimuli/tad_f_c-1_p-3_h-1_r1.wav'},
-    {'name': 'stimuli/tad_f_c0_p-1_h-3_r3.wav', 'path': 'stimuli/tad_f_c0_p-1_h-3_r3.wav'},
-    {'name': 'stimuli/tad_f_c0_p1_h-2_r1.wav', 'path': 'stimuli/tad_f_c0_p1_h-2_r1.wav'},
-    {'name': 'stimuli/tad_f_c0_p2_h-2_r1.wav', 'path': 'stimuli/tad_f_c0_p2_h-2_r1.wav'},
-    {'name': 'stimuli/tad_f_c0_p2_h-2_r3.wav', 'path': 'stimuli/tad_f_c0_p2_h-2_r3.wav'},
-    {'name': 'stimuli/tad_f_c0_p2_h0_r3.wav', 'path': 'stimuli/tad_f_c0_p2_h0_r3.wav'},
-    {'name': 'stimuli/tad_f_c1_p-3_h3_r3.wav', 'path': 'stimuli/tad_f_c1_p-3_h3_r3.wav'},
-    {'name': 'stimuli/tad_f_c1_p0_h2_r3.wav', 'path': 'stimuli/tad_f_c1_p0_h2_r3.wav'},
-    {'name': 'stimuli/tad_f_c1_p1_h3_r1.wav', 'path': 'stimuli/tad_f_c1_p1_h3_r1.wav'},
-    {'name': 'stimuli/tad_f_c2_p2_h1_r2.wav', 'path': 'stimuli/tad_f_c2_p2_h1_r2.wav'},
-    {'name': 'stimuli/tad_f_c2_p3_h-2_r2.wav', 'path': 'stimuli/tad_f_c2_p3_h-2_r2.wav'},
-    {'name': 'stimuli/tad_m_c-2_p-2_h-1_r3.wav', 'path': 'stimuli/tad_m_c-2_p-2_h-1_r3.wav'},
-    {'name': 'stimuli/tad_m_c-2_p-3_h-1_r1.wav', 'path': 'stimuli/tad_m_c-2_p-3_h-1_r1.wav'},
-    {'name': 'stimuli/tad_m_c-2_p0_h-3_r2.wav', 'path': 'stimuli/tad_m_c-2_p0_h-3_r2.wav'},
-    {'name': 'stimuli/tad_m_c-2_p0_h2_r1.wav', 'path': 'stimuli/tad_m_c-2_p0_h2_r1.wav'},
-    {'name': 'stimuli/tad_m_c-2_p2_h0_r2.wav', 'path': 'stimuli/tad_m_c-2_p2_h0_r2.wav'},
-    {'name': 'stimuli/tad_m_c-2_p3_h-3_r2.wav', 'path': 'stimuli/tad_m_c-2_p3_h-3_r2.wav'},
-    {'name': 'stimuli/tad_m_c1_p0_h3_r2.wav', 'path': 'stimuli/tad_m_c1_p0_h3_r2.wav'},
-    {'name': 'stimuli/tad_m_c1_p2_h3_r1.wav', 'path': 'stimuli/tad_m_c1_p2_h3_r1.wav'},
-    {'name': 'stimuli/tad_m_c1_p3_h2_r3.wav', 'path': 'stimuli/tad_m_c1_p3_h2_r3.wav'},
-    {'name': 'stimuli/tad_m_c2_p1_h-3_r2.wav', 'path': 'stimuli/tad_m_c2_p1_h-3_r2.wav'},
-    {'name': 'stimuli/tad_m_c2_p1_h2_r2.wav', 'path': 'stimuli/tad_m_c2_p1_h2_r2.wav'},
+    {'name': 'conditions/training_sounds.xlsx', 'path': 'conditions/training_sounds.xlsx'},
+    {'name': 'training_stimuli/chat_f_creaky.wav', 'path': 'training_stimuli/chat_f_creaky.wav'},
+    {'name': 'training_stimuli/chat_f_modal.wav', 'path': 'training_stimuli/chat_f_modal.wav'},
+    {'name': 'training_stimuli/vop_m_modal.wav', 'path': 'training_stimuli/vop_m_modal.wav'},
+    {'name': 'training_stimuli/vop_m_creaky.wav', 'path': 'training_stimuli/vop_m_creaky.wav'},
+    {'name': 'training_stimuli/jat_m_creaky.wav', 'path': 'training_stimuli/jat_m_creaky.wav'},
+    {'name': 'training_stimuli/vak_m_modal.wav', 'path': 'training_stimuli/vak_m_modal.wav'},
+    {'name': 'training_stimuli/vak_m_creaky.wav', 'path': 'training_stimuli/vak_m_creaky.wav'},
+    {'name': 'training_stimuli/vop_f_modal.wav', 'path': 'training_stimuli/vop_f_modal.wav'},
+    {'name': 'training_stimuli/vop_f_creaky.wav', 'path': 'training_stimuli/vop_f_creaky.wav'},
+    {'name': 'training_stimuli/zat_m_creaky.wav', 'path': 'training_stimuli/zat_m_creaky.wav'},
+    {'name': 'training_stimuli/vok_f_modal.wav', 'path': 'training_stimuli/vok_f_modal.wav'},
+    {'name': 'training_stimuli/vok_f_creaky.wav', 'path': 'training_stimuli/vok_f_creaky.wav'},
+    {'name': 'conditions/stimuli_f0_adjusted.xlsx', 'path': 'conditions/stimuli_f0_adjusted.xlsx'},
+    {'name': 'stimuli_f0/hab_f_c-1_p-3_h2_r3.wav', 'path': 'stimuli_f0/hab_f_c-1_p-3_h2_r3.wav'},
+    {'name': 'stimuli_f0/hab_f_c-1_p2_h-3_r3.wav', 'path': 'stimuli_f0/hab_f_c-1_p2_h-3_r3.wav'},
+    {'name': 'stimuli_f0/hab_f_c0_p-1_h-3_r3.wav', 'path': 'stimuli_f0/hab_f_c0_p-1_h-3_r3.wav'},
+    {'name': 'stimuli_f0/hab_f_c0_p-1_h2_r2.wav', 'path': 'stimuli_f0/hab_f_c0_p-1_h2_r2.wav'},
+    {'name': 'stimuli_f0/hab_f_c0_p0_h-1_r3.wav', 'path': 'stimuli_f0/hab_f_c0_p0_h-1_r3.wav'},
+    {'name': 'stimuli_f0/hab_f_c0_p0_h-3_r2.wav', 'path': 'stimuli_f0/hab_f_c0_p0_h-3_r2.wav'},
+    {'name': 'stimuli_f0/hab_f_c0_p1_h0_r2.wav', 'path': 'stimuli_f0/hab_f_c0_p1_h0_r2.wav'},
+    {'name': 'stimuli_f0/hab_f_c0_p3_h3_r3.wav', 'path': 'stimuli_f0/hab_f_c0_p3_h3_r3.wav'},
+    {'name': 'stimuli_f0/hab_f_c1_p1_h2_r2.wav', 'path': 'stimuli_f0/hab_f_c1_p1_h2_r2.wav'},
+    {'name': 'stimuli_f0/hab_f_c2_p-2_h2_r3.wav', 'path': 'stimuli_f0/hab_f_c2_p-2_h2_r3.wav'},
+    {'name': 'stimuli_f0/hab_f_c2_p1_h-3_r3.wav', 'path': 'stimuli_f0/hab_f_c2_p1_h-3_r3.wav'},
+    {'name': 'stimuli_f0/hab_m_c-1_p-3_h-3_r2.wav', 'path': 'stimuli_f0/hab_m_c-1_p-3_h-3_r2.wav'},
+    {'name': 'stimuli_f0/hab_m_c-1_p1_h3_r1.wav', 'path': 'stimuli_f0/hab_m_c-1_p1_h3_r1.wav'},
+    {'name': 'stimuli_f0/hab_m_c0_p-2_h3_r2.wav', 'path': 'stimuli_f0/hab_m_c0_p-2_h3_r2.wav'},
+    {'name': 'stimuli_f0/hab_m_c0_p0_h-3_r2.wav', 'path': 'stimuli_f0/hab_m_c0_p0_h-3_r2.wav'},
+    {'name': 'stimuli_f0/hab_m_c1_p-3_h-3_r3.wav', 'path': 'stimuli_f0/hab_m_c1_p-3_h-3_r3.wav'},
+    {'name': 'stimuli_f0/hab_m_c1_p2_h-2_r1.wav', 'path': 'stimuli_f0/hab_m_c1_p2_h-2_r1.wav'},
+    {'name': 'stimuli_f0/hab_m_c2_p-3_h-1_r1.wav', 'path': 'stimuli_f0/hab_m_c2_p-3_h-1_r1.wav'},
+    {'name': 'stimuli_f0/hab_m_c2_p-3_h-3_r1.wav', 'path': 'stimuli_f0/hab_m_c2_p-3_h-3_r1.wav'},
+    {'name': 'stimuli_f0/hab_m_c2_p0_h2_r3.wav', 'path': 'stimuli_f0/hab_m_c2_p0_h2_r3.wav'},
+    {'name': 'stimuli_f0/hab_m_c2_p2_h-2_r2.wav', 'path': 'stimuli_f0/hab_m_c2_p2_h-2_r2.wav'},
+    {'name': 'stimuli_f0/hab_m_c2_p2_h1_r1.wav', 'path': 'stimuli_f0/hab_m_c2_p2_h1_r1.wav'},
+    {'name': 'stimuli_f0/had_f_c-1_p-1_h-3_r1.wav', 'path': 'stimuli_f0/had_f_c-1_p-1_h-3_r1.wav'},
+    {'name': 'stimuli_f0/had_f_c0_p-3_h2_r3.wav', 'path': 'stimuli_f0/had_f_c0_p-3_h2_r3.wav'},
+    {'name': 'stimuli_f0/had_f_c1_p-1_h3_r2.wav', 'path': 'stimuli_f0/had_f_c1_p-1_h3_r2.wav'},
+    {'name': 'stimuli_f0/had_f_c1_p-3_h2_r2.wav', 'path': 'stimuli_f0/had_f_c1_p-3_h2_r2.wav'},
+    {'name': 'stimuli_f0/had_f_c1_p0_h1_r1.wav', 'path': 'stimuli_f0/had_f_c1_p0_h1_r1.wav'},
+    {'name': 'stimuli_f0/had_f_c1_p2_h1_r2.wav', 'path': 'stimuli_f0/had_f_c1_p2_h1_r2.wav'},
+    {'name': 'stimuli_f0/had_f_c2_p-2_h-3_r2.wav', 'path': 'stimuli_f0/had_f_c2_p-2_h-3_r2.wav'},
+    {'name': 'stimuli_f0/had_f_c2_p-3_h2_r1.wav', 'path': 'stimuli_f0/had_f_c2_p-3_h2_r1.wav'},
+    {'name': 'stimuli_f0/had_f_c2_p2_h-1_r1.wav', 'path': 'stimuli_f0/had_f_c2_p2_h-1_r1.wav'},
+    {'name': 'stimuli_f0/had_f_c2_p3_h-1_r1.wav', 'path': 'stimuli_f0/had_f_c2_p3_h-1_r1.wav'},
+    {'name': 'stimuli_f0/had_f_c2_p3_h1_r2.wav', 'path': 'stimuli_f0/had_f_c2_p3_h1_r2.wav'},
+    {'name': 'stimuli_f0/had_m_c-1_p3_h3_r3.wav', 'path': 'stimuli_f0/had_m_c-1_p3_h3_r3.wav'},
+    {'name': 'stimuli_f0/had_m_c-2_p2_h-2_r2.wav', 'path': 'stimuli_f0/had_m_c-2_p2_h-2_r2.wav'},
+    {'name': 'stimuli_f0/had_m_c-2_p3_h0_r1.wav', 'path': 'stimuli_f0/had_m_c-2_p3_h0_r1.wav'},
+    {'name': 'stimuli_f0/had_m_c0_p1_h3_r3.wav', 'path': 'stimuli_f0/had_m_c0_p1_h3_r3.wav'},
+    {'name': 'stimuli_f0/had_m_c1_p-1_h-3_r3.wav', 'path': 'stimuli_f0/had_m_c1_p-1_h-3_r3.wav'},
+    {'name': 'stimuli_f0/had_m_c1_p1_h2_r3.wav', 'path': 'stimuli_f0/had_m_c1_p1_h2_r3.wav'},
+    {'name': 'stimuli_f0/had_m_c1_p3_h-3_r2.wav', 'path': 'stimuli_f0/had_m_c1_p3_h-3_r2.wav'},
+    {'name': 'stimuli_f0/had_m_c2_p-2_h-3_r2.wav', 'path': 'stimuli_f0/had_m_c2_p-2_h-3_r2.wav'},
+    {'name': 'stimuli_f0/had_m_c2_p-3_h2_r2.wav', 'path': 'stimuli_f0/had_m_c2_p-3_h2_r2.wav'},
+    {'name': 'stimuli_f0/had_m_c2_p2_h1_r3.wav', 'path': 'stimuli_f0/had_m_c2_p2_h1_r3.wav'},
+    {'name': 'stimuli_f0/had_m_c2_p2_h3_r2.wav', 'path': 'stimuli_f0/had_m_c2_p2_h3_r2.wav'},
+    {'name': 'stimuli_f0/tab_f_c-2_p-1_h-1_r2.wav', 'path': 'stimuli_f0/tab_f_c-2_p-1_h-1_r2.wav'},
+    {'name': 'stimuli_f0/tab_f_c-2_p0_h-1_r1.wav', 'path': 'stimuli_f0/tab_f_c-2_p0_h-1_r1.wav'},
+    {'name': 'stimuli_f0/tab_f_c-2_p1_h-1_r2.wav', 'path': 'stimuli_f0/tab_f_c-2_p1_h-1_r2.wav'},
+    {'name': 'stimuli_f0/tab_f_c0_p-1_h0_r1.wav', 'path': 'stimuli_f0/tab_f_c0_p-1_h0_r1.wav'},
+    {'name': 'stimuli_f0/tab_f_c0_p0_h3_r1.wav', 'path': 'stimuli_f0/tab_f_c0_p0_h3_r1.wav'},
+    {'name': 'stimuli_f0/tab_f_c0_p2_h-1_r3.wav', 'path': 'stimuli_f0/tab_f_c0_p2_h-1_r3.wav'},
+    {'name': 'stimuli_f0/tab_f_c1_p-3_h-3_r1.wav', 'path': 'stimuli_f0/tab_f_c1_p-3_h-3_r1.wav'},
+    {'name': 'stimuli_f0/tab_f_c1_p2_h3_r1.wav', 'path': 'stimuli_f0/tab_f_c1_p2_h3_r1.wav'},
+    {'name': 'stimuli_f0/tab_f_c2_p3_h0_r1.wav', 'path': 'stimuli_f0/tab_f_c2_p3_h0_r1.wav'},
+    {'name': 'stimuli_f0/tab_f_c2_p3_h2_r2.wav', 'path': 'stimuli_f0/tab_f_c2_p3_h2_r2.wav'},
+    {'name': 'stimuli_f0/tab_f_c2_p3_h3_r3.wav', 'path': 'stimuli_f0/tab_f_c2_p3_h3_r3.wav'},
+    {'name': 'stimuli_f0/tab_m_c-1_p-3_h3_r1.wav', 'path': 'stimuli_f0/tab_m_c-1_p-3_h3_r1.wav'},
+    {'name': 'stimuli_f0/tab_m_c-1_p0_h3_r3.wav', 'path': 'stimuli_f0/tab_m_c-1_p0_h3_r3.wav'},
+    {'name': 'stimuli_f0/tab_m_c0_p-1_h-2_r3.wav', 'path': 'stimuli_f0/tab_m_c0_p-1_h-2_r3.wav'},
+    {'name': 'stimuli_f0/tab_m_c0_p-1_h-3_r2.wav', 'path': 'stimuli_f0/tab_m_c0_p-1_h-3_r2.wav'},
+    {'name': 'stimuli_f0/tab_m_c0_p0_h-1_r2.wav', 'path': 'stimuli_f0/tab_m_c0_p0_h-1_r2.wav'},
+    {'name': 'stimuli_f0/tab_m_c0_p0_h-1_r3.wav', 'path': 'stimuli_f0/tab_m_c0_p0_h-1_r3.wav'},
+    {'name': 'stimuli_f0/tab_m_c1_p-2_h-2_r2.wav', 'path': 'stimuli_f0/tab_m_c1_p-2_h-2_r2.wav'},
+    {'name': 'stimuli_f0/tab_m_c2_p-1_h-3_r2.wav', 'path': 'stimuli_f0/tab_m_c2_p-1_h-3_r2.wav'},
+    {'name': 'stimuli_f0/tab_m_c2_p0_h3_r1.wav', 'path': 'stimuli_f0/tab_m_c2_p0_h3_r1.wav'},
+    {'name': 'stimuli_f0/tab_m_c2_p1_h-2_r1.wav', 'path': 'stimuli_f0/tab_m_c2_p1_h-2_r1.wav'},
+    {'name': 'stimuli_f0/tab_m_c2_p2_h3_r2.wav', 'path': 'stimuli_f0/tab_m_c2_p2_h3_r2.wav'},
+    {'name': 'stimuli_f0/tad_f_c-1_p-3_h-2_r1.wav', 'path': 'stimuli_f0/tad_f_c-1_p-3_h-2_r1.wav'},
+    {'name': 'stimuli_f0/tad_f_c-2_p-2_h-2_r2.wav', 'path': 'stimuli_f0/tad_f_c-2_p-2_h-2_r2.wav'},
+    {'name': 'stimuli_f0/tad_f_c0_p-1_h-3_r1.wav', 'path': 'stimuli_f0/tad_f_c0_p-1_h-3_r1.wav'},
+    {'name': 'stimuli_f0/tad_f_c0_p-2_h0_r3.wav', 'path': 'stimuli_f0/tad_f_c0_p-2_h0_r3.wav'},
+    {'name': 'stimuli_f0/tad_f_c0_p2_h0_r3.wav', 'path': 'stimuli_f0/tad_f_c0_p2_h0_r3.wav'},
+    {'name': 'stimuli_f0/tad_f_c1_p-1_h1_r1.wav', 'path': 'stimuli_f0/tad_f_c1_p-1_h1_r1.wav'},
+    {'name': 'stimuli_f0/tad_f_c1_p-2_h1_r2.wav', 'path': 'stimuli_f0/tad_f_c1_p-2_h1_r2.wav'},
+    {'name': 'stimuli_f0/tad_f_c1_p0_h0_r2.wav', 'path': 'stimuli_f0/tad_f_c1_p0_h0_r2.wav'},
+    {'name': 'stimuli_f0/tad_f_c1_p1_h3_r1.wav', 'path': 'stimuli_f0/tad_f_c1_p1_h3_r1.wav'},
+    {'name': 'stimuli_f0/tad_f_c2_p-2_h-1_r1.wav', 'path': 'stimuli_f0/tad_f_c2_p-2_h-1_r1.wav'},
+    {'name': 'stimuli_f0/tad_f_c2_p1_h2_r1.wav', 'path': 'stimuli_f0/tad_f_c2_p1_h2_r1.wav'},
+    {'name': 'stimuli_f0/tad_m_c-1_p-3_h-3_r2.wav', 'path': 'stimuli_f0/tad_m_c-1_p-3_h-3_r2.wav'},
+    {'name': 'stimuli_f0/tad_m_c-1_p3_h1_r3.wav', 'path': 'stimuli_f0/tad_m_c-1_p3_h1_r3.wav'},
+    {'name': 'stimuli_f0/tad_m_c0_p-1_h-1_r1.wav', 'path': 'stimuli_f0/tad_m_c0_p-1_h-1_r1.wav'},
+    {'name': 'stimuli_f0/tad_m_c0_p-2_h1_r3.wav', 'path': 'stimuli_f0/tad_m_c0_p-2_h1_r3.wav'},
+    {'name': 'stimuli_f0/tad_m_c0_p0_h1_r2.wav', 'path': 'stimuli_f0/tad_m_c0_p0_h1_r2.wav'},
+    {'name': 'stimuli_f0/tad_m_c0_p3_h-1_r3.wav', 'path': 'stimuli_f0/tad_m_c0_p3_h-1_r3.wav'},
+    {'name': 'stimuli_f0/tad_m_c1_p-2_h1_r3.wav', 'path': 'stimuli_f0/tad_m_c1_p-2_h1_r3.wav'},
+    {'name': 'stimuli_f0/tad_m_c1_p0_h2_r3.wav', 'path': 'stimuli_f0/tad_m_c1_p0_h2_r3.wav'},
+    {'name': 'stimuli_f0/tad_m_c1_p2_h-2_r3.wav', 'path': 'stimuli_f0/tad_m_c1_p2_h-2_r3.wav'},
+    {'name': 'stimuli_f0/tad_m_c2_p-1_h2_r3.wav', 'path': 'stimuli_f0/tad_m_c2_p-1_h2_r3.wav'},
+    {'name': 'stimuli_f0/tad_m_c2_p2_h-2_r1.wav', 'path': 'stimuli_f0/tad_m_c2_p2_h-2_r1.wav'},
     {'name': 'conditions/survey_items.xlsx', 'path': 'conditions/survey_items.xlsx'},
   ]
 });
@@ -288,7 +295,7 @@ async function experimentInit() {
   welcomeText = new visual.TextStim({
     win: psychoJS.window,
     name: 'welcomeText',
-    text: 'In this study you will listen to short recordings of speech and judge how strongly they speak with vocal fry.\n\nYou will first complete a short introduction to become familiar with the concept of vocal fry and with the task, which is followed by the main part of the experiment.\n\nPlease put on your headphones now and make sure the volume is at a comfortable level.',
+    text: 'In this study you will listen to short recordings of speakers and judge how strongly they speak with vocal fry.\n\nYou will first complete a short introduction to become familiar with the concept of vocal fry and with the task, which is followed by the main part of the experiment.\n\nPlease put on your headphones now and make sure the volume is at a comfortable level.',
     font: 'Arial',
     units: undefined, 
     pos: [0, 0], draggable: false, height: 0.05,  wrapWidth: undefined, ori: 0.0,
@@ -372,7 +379,7 @@ async function experimentInit() {
   introHint = new visual.TextStim({
     win: psychoJS.window,
     name: 'introHint',
-    text: 'Press SPACE to play the recording. You may replay it as many times as you like.',
+    text: 'Press SPACE to replay the recording. You may replay it as many times as you like.',
     font: 'Arial',
     units: undefined, 
     pos: [0, 0], draggable: false, height: 0.02,  wrapWidth: undefined, ori: 0.0,
@@ -535,7 +542,7 @@ async function experimentInit() {
   trialText = new visual.TextStim({
     win: psychoJS.window,
     name: 'trialText',
-    text: 'Press SPACE to play the syllable. You can replay it as many times as you like.',
+    text: 'Press SPACE to replay the syllable. You can replay it as many times as you like.',
     font: 'Arial',
     units: undefined, 
     pos: [0, 0.25], draggable: false, height: 0.02,  wrapWidth: undefined, ori: 0.0,
@@ -688,7 +695,7 @@ async function experimentInit() {
   spaceHint = new visual.TextStim({
     win: psychoJS.window,
     name: 'spaceHint',
-    text: 'Press SPACE to play the syllable. You can only replay it once.',
+    text: 'Press SPACE to replay the syllable. You can only replay it once.',
     font: 'Arial',
     units: undefined, 
     pos: [0, 0.15], draggable: false, height: 0.02,  wrapWidth: undefined, ori: 0.0,
@@ -1162,7 +1169,7 @@ function trainingLoopLoopBegin(trainingLoopLoopScheduler, snapshot) {
       psychoJS: psychoJS,
       nReps: 1, method: TrialHandler.Method.SEQUENTIAL,
       extraInfo: expInfo, originPath: undefined,
-      trialList: 'conditions/training.xlsx',
+      trialList: 'conditions/training_sounds.xlsx',
       seed: undefined, name: 'trainingLoop'
     });
     psychoJS.experiment.addLoop(trainingLoop); // add the loop to the experiment
@@ -1224,7 +1231,7 @@ function mainLoopLoopBegin(mainLoopLoopScheduler, snapshot) {
       psychoJS: psychoJS,
       nReps: 1, method: TrialHandler.Method.RANDOM,
       extraInfo: expInfo, originPath: undefined,
-      trialList: 'conditions/stimuli.xlsx',
+      trialList: 'conditions/stimuli_f0_adjusted.xlsx',
       seed: undefined, name: 'mainLoop'
     });
     psychoJS.experiment.addLoop(mainLoop); // add the loop to the experiment
@@ -1347,6 +1354,7 @@ function surveyLoopLoopEndIteration(scheduler, snapshot) {
 
 var introTrialMaxDurationReached;
 var nPlays;
+var autoPlayed;
 var _key_space_3_allKeys;
 var introTrialMaxDuration;
 var introTrialComponents;
@@ -1367,6 +1375,7 @@ function introTrialRoutineBegin(snapshot) {
     // Run 'Begin Routine' code from introLogic
     nPlays = 0;
     continueBtn_2.opacity = 0.35;
+    autoPlayed = false;
     introSound.isFinished = false;
     introSound.setValue(introFile);
     introSound.setVolume(1.0);
@@ -1403,6 +1412,12 @@ function introTrialRoutineEachFrame() {
     frameN = frameN + 1;// number of completed frames (so 0 is the first frame)
     // update/draw components on each frame
     // Run 'Each Frame' code from introLogic
+    if (!autoPlayed && t >= 0.3) {
+        introSound.play();
+        autoPlayed = true;
+        nPlays += 1;
+    }
+    
     // play the sound once per space press
     if (key_space_3.getKeys({keyList: ['space'], waitRelease: false}).length > 0) {
         introSound.play();
@@ -1775,6 +1790,7 @@ function trainingTrialRoutineBegin(snapshot) {
     correct = false;
     selection = "";
     nPlays = 0;
+    autoPlayed = false;
     feedbackMsg = "";
     arrowPos = (stimType === "modal") ? [-0.55, -0.015] : [0.475, -0.015];
     labelText = (stimType === "modal") ? "There is NO vocal fry at all." : "There is VERY STRONG vocal fry.";
@@ -1826,6 +1842,12 @@ function trainingTrialRoutineEachFrame() {
     frameN = frameN + 1;// number of completed frames (so 0 is the first frame)
     // update/draw components on each frame
     // Run 'Each Frame' code from trainingLogic
+    if (!autoPlayed && t >= 0.3) {
+        trainSound.play();
+        autoPlayed = true;
+        nPlays += 1;
+    }
+    
     // play the sound once per space press
     if (key_space.getKeys({keyList: ['space'], waitRelease: false}).length > 0) {
         trainSound.play();
@@ -2324,6 +2346,7 @@ function mainTrialRoutineBegin(snapshot) {
     nPlays = 0;
     maxPlays = 2;
     replay_used = false;
+    autoPlayed = false;
     
     console.log('Trial file:', stimFile);
     mainSound.isFinished = false;
@@ -2372,6 +2395,12 @@ function mainTrialRoutineEachFrame() {
     frameN = frameN + 1;// number of completed frames (so 0 is the first frame)
     // update/draw components on each frame
     // Run 'Each Frame' code from mainLogic
+    if (!autoPlayed && t >= 0.3) {
+        mainSound.play();
+        autoPlayed = true;
+        nPlays += 1;
+    }
+    
     // replay via SPACE, limited to one
     if (nPlays < maxPlays && key_space_2.getKeys({keyList: ['space'], waitRelease: false}).length > 0) {
         mainSound.play();
